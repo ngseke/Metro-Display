@@ -1,5 +1,5 @@
 * {
-  border: 1px rgba(0, 0, 255, .3) solid;
+  border: 0px rgba(0, 0, 255, .3) solid;
   box-sizing: border-box;
 }
 
@@ -83,12 +83,30 @@ body > .container {
   padding-right: 1rem;
 }
 
+.main_station_name_box {
+  width: 40rem;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+}
+
 .main_station_name {
-  text-indent: .5rem;
+  text-indent: 0.5rem;
   letter-spacing: .5rem;
   font-size: 6rem;
   font-weight: 800;
+  white-space: nowrap;
+  margin: auto;
+  margin-left: -100%;
 }
+
+
+.main_info .col-lg-6 {
+  overflow: hidden;
+  text-align: center;
+
+}
+
 
 .main_info_logo {
   width: 7rem;
@@ -142,6 +160,7 @@ body > .container {
 }
 
 .sub_station_num {
+  color: #444;
   font-size: 1.2rem;
   font-weight: 800;
 }
@@ -225,6 +244,10 @@ body > .container {
 
 /* 路線顏色icon小 */
 
+.transfer_info .col {
+  padding-right: 0rem;
+}
+
 .transfer_info .line_icon_s {
   padding: auto;
   padding-left: 0;
@@ -262,7 +285,9 @@ body > .container {
   overflow: hidden;
 }
 
-table,tr,td{
+table,
+tr,
+td {
   padding: 0px;
   margin: 0px;
 }
@@ -309,12 +334,51 @@ table,tr,td{
 .scale_085 {
   transform: scale(.85, 1);
 }
+.scale_080 {
+  transform: scale(.80, 1);
+}
+.scale_075 {
+  transform: scale(.75, 1);
+}
+.scale_070 {
+  transform: scale(.70, 1);
+}
 
 /*Letter-Spacing*/
+
+.spacing_005 {
+  text-indent: .05rem;
+  letter-spacing: .05rem;
+}
+
+.spacing_010 {
+  text-indent: .1rem;
+  letter-spacing: .1rem;
+}
+
+.spacing_020 {
+  text-indent: .2rem;
+  letter-spacing: .2rem;
+}
+
+.spacing_030 {
+  text-indent: .3rem;
+  letter-spacing: .3rem;
+}
+
+.spacing_040 {
+  text-indent: .4rem;
+  letter-spacing: .4rem;
+}
 
 .spacing_070 {
   text-indent: .7rem;
   letter-spacing: .7rem;
+}
+
+.spacing_080 {
+  text-indent: .8rem;
+  letter-spacing: .8rem;
 }
 
 .spacing_100 {
