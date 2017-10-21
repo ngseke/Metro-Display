@@ -251,6 +251,8 @@ body > .container {
 
 .transfer_info .transfer_info_item {
   margin-bottom: .1rem;
+  padding: 0;
+  margin: 0;
 }
 
 .transfer_info tr {
@@ -258,6 +260,11 @@ body > .container {
   margin: 0px;
   height: 2.3rem;
   overflow: hidden;
+}
+
+table,tr,td{
+  padding: 0px;
+  margin: 0px;
 }
 
 
