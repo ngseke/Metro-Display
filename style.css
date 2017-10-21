@@ -1,14 +1,13 @@
 * {
-  border: 0px rgba(0, 0, 255, .3) solid;
+  border: 1px rgba(0, 0, 255, .3) solid;
   box-sizing: border-box;
 }
 
-body {
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-}
+body {}
 
 body > .container {
-  margin-top: 1rem;
+  padding: 1rem;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 /* 終點站 外box */
@@ -55,19 +54,34 @@ body > .container {
 
 /* 車號 */
 
-.car_num h3 {
+.car_num h3 {}
+
+.car_num h3 .text_l {
+  text-align: right;
+
+}
+
+.car_num h3 .text_r {
+  text-align: left;
+  display: inline-block;
+  min-width: 4rem;
   letter-spacing: .2rem;
 }
 
 .car_num .badge {
+  margin-left: .3rem;
   margin-right: .3rem;
   vertical-align: text-bottom;
   letter-spacing: 0px;
+  font-size: 1.5rem
 }
 
 /* 主要車站 */
 
-.main_station_number span {}
+.main_station_number span {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
 .main_station_name {
   text-indent: .5rem;
@@ -77,7 +91,8 @@ body > .container {
 }
 
 .main_info_logo {
-  width: 3rem;
+  width: 7rem;
+  opacity: .1;
 }
 
 /* 分割線 */
@@ -87,9 +102,21 @@ body > .container {
   height: .5rem;
 }
 
-.btm_area{
+/* 下半區塊 */
+
+.btm_area {
   min-height: 28rem;
 }
+
+.welcome .row {
+  min-height: 24rem;
+}
+
+.welcome .welcome_logo {
+  width: 20rem;
+}
+
+
 /* 次要車站 */
 
 .sub_station_area {
@@ -119,7 +146,7 @@ body > .container {
   font-weight: 800;
 }
 
-/* 顏色線條 */
+/* 軌道 */
 
 .route_line {
   position: relative;
@@ -148,6 +175,7 @@ body > .container {
   font-weight: 600;
   margin-right: .7rem;
   display: inline-block;
+
 }
 
 .route_arrow {
@@ -191,16 +219,16 @@ body > .container {
 /* 最下方 轉乘資訊區塊 */
 
 .transfer_info {
-  margin-top: .1rem;
+  margin-top: .3rem;
   font-weight: 500;
 }
 
 /* 路線顏色icon小 */
 
 .transfer_info .line_icon_s {
+  padding: auto;
   padding-left: 0;
   padding-right: 0;
-  display: inline-block;
   font-size: .9rem;
   margin-right: .2rem;
   width: 1.5rem;
@@ -208,23 +236,30 @@ body > .container {
   font-weight: 600;
 }
 
-.transfer_info .text {
-  display: inline-block;
-  line-height: 1.1rem;
-}
-.transfer_info .eng{
-  font-size: .9rem;
-}
-.transfer_info table{
-  min-height: 2rem;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
+.transfer_info img {
+  width: 70%;
 }
 
-td,tr,tbody{
-   padding: 0;
+.transfer_info .text {
+  line-height: 1.1rem;
+  display: inline-block;
 }
+
+.transfer_info .eng {
+  font-size: .9rem;
+}
+
+.transfer_info .transfer_info_item {
+  margin-bottom: .1rem;
+}
+
+.transfer_info tr {
+  padding: 0px;
+  margin: 0px;
+  height: 2.3rem;
+  overflow: hidden;
+}
+
 
 /* 路線背景顏色集 */
 
@@ -245,8 +280,17 @@ td,tr,tbody{
   background: #005cb9;
 }
 
+.route_arrow.bg_color_bl {
+  background: transparent;
+  border-left: #005cb9 1.5rem solid;
+}
+
 .bg_color_br {
   background: #a1662c;
+}
+
+.bg_color_a {
+  background: #814aad;
 }
 
 /*Scale(變形)*/
