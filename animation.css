@@ -1,78 +1,127 @@
 @keyframes main_sta_ani {
   0% {
-    transform-origin:top;
-    transform: scaleY(0.1);
-    opacity: 0;
-  }
-  10% {
     transform-origin: top;
     transform: scaleY(1);
     opacity: 1;
   }
-
-  40%{
+  /* 維持 */
+  45% {
     transform-origin: bottom;
-    transform: scaleY(1)  ;
+    transform: scaleY(1);
     opacity: 1;
   }
   50% {
-    transform-origin:bottom;
-    transform: scaleY(0.1);
+    transform-origin: bottom;
+    transform: scaleY(0);
     opacity: 0;
   }
-  100%{
-    transform-origin:bottom;
-    transform: scaleY(0.1);
+  /* 維持 */
+  95% {
+    transform-origin: top;
+    transform: scaleY(0);
     opacity: 0;
+  }
+  100% {
+    transform-origin: top;
+    transform: scaleY(1);
+    opacity: 1;
   }
 }
 
 @keyframes main_sta_ani_eng {
   0% {
-    transform-origin:top;
-    transform: scaleY(0.1) scaleX(.75) ;
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.75);
+    opacity: 0;
+  }
+  45% {
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.75);
     opacity: 0;
   }
   50% {
-    transform-origin:top;
-    transform: scaleY(0.1) scaleX(.75) ;
-    opacity: 0;
-  }
-  60% {
     transform-origin: top;
-    transform: scaleY(1) scaleX(.75) ;
+    transform: scaleY(1) scaleX(.75);
     opacity: 1;
   }
 
-  90%{
+  95% {
     transform-origin: bottom;
-    transform: scaleY(1) scaleX(.75) ;
+    transform: scaleY(1) scaleX(.75);
     opacity: 1;
   }
   100% {
-    transform-origin:bottom;
-    transform: scaleY(0.1) scaleX(.75) ;
+    transform-origin: bottom;
+    transform: scaleY(0) scaleX(.75);
     opacity: 0;
   }
-  110% {
-    transform-origin:bottom;
-    transform: scaleY(0.1) scaleX(.75) ;
-    opacity: 0;
-  }
-}
-h1.main_station_name {
-  animation-name: main_sta_ani;
-  animation-duration: 5s;
-  animation-timing-function:linear;
-  animation-delay: 0s;
-  animation-iteration-count:infinite;
+
 }
 
+@keyframes main_info_ani {
+  0% {
+    opacity: 1;
+  }
+  /* 維持 */
+  45% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  /* 維持 */
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+
+}
+
+@keyframes main_info_ani_eng {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+
+}
+
+h1.main_station_name,
+.destination h3,
+.car_num .text_r,
+.car_num .text_l,
+.main_station_number h2{
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+h1.main_station_name {
+  animation-name: main_sta_ani;
+}
 
 h1.main_station_name.eng {
   animation-name: main_sta_ani_eng;
-  animation-duration: 5s;
-  animation-timing-function:linear;
-  animation-delay: 0s;
-  animation-iteration-count:infinite;
+}
+
+.destination h3,
+.car_num .text_r ,.main_station_number h2{
+  animation-name: main_info_ani;
+}
+
+.destination h3.eng,
+.car_num .text_l,.main_station_number h2.eng {
+  animation-name: main_info_ani_eng;
 }

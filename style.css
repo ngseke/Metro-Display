@@ -12,20 +12,31 @@ body > .container {
 
 /* 終點站 外box */
 
-.destination_text {
+.destination {
   letter-spacing: .2rem;
-}
-.destination_text .eng {
-  letter-spacing: 0rem;
+  padding-left: 2rem;
 }
 
-.destination_text h3 {
-   font-weight: 700;
+.destination .for{
+  display:inline-block;
+  vertical-align:middle;
+  width: 4rem;
+  text-align: center;
 }
+
+.destination h3 {
+   font-weight: 700; 
+}
+
+.destination h3.eng {
+  letter-spacing: 0rem;
+  margin-top: -2.75rem;
+}
+
 
 /* 終點站文字 badge含底色 */
 
-.destination_text .badge {
+.destination .badge {
   font-size: 1.5rem;
   letter-spacing: .1rem;
   text-indent: .1rem;
@@ -61,6 +72,9 @@ body > .container {
 
 /* 車號 */
 
+.car_num{
+  padding-right: 2rem;
+}
 .car_num h3 {
   margin: 0;
 }
@@ -92,11 +106,18 @@ body > .container {
   padding-right: 1rem;
 }
 
-.main_station_number h2 {
+.main_station_number .next{
   display: inline-block;
+}
+.main_station_number h2 {
+  display: inlie-block;
+  text-align: center;
   font-weight: 700;
   margin: 0;
   margin-right: 1rem;
+}
+.main_station_number h2.eng{
+  margin-top: -2.2rem;
 }
 
 .main_station_number h1 {
@@ -206,7 +227,6 @@ h1.main_station_name.eng {
 }
 
 .sub_station_name.eng span {
-  bbackground: red;
   width: 13rem;
   display: inline-block;
   transform-origin: left bottom;
