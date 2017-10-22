@@ -106,7 +106,7 @@
  
   50% {
     visibility: hidden;
-    margin-top: 0rem;
+     margin-top: -28rem;
   }
   100% {
     visibility: visible;
