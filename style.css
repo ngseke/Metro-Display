@@ -20,6 +20,7 @@ body > .container {
 }
 
 .destination_text h3 {
+   font-weight: 700;
 }
 
 /* 終點站文字 badge含底色 */
@@ -102,6 +103,11 @@ body > .container {
   display: inline-block;
 }
 
+.main_info .col-lg-8{
+  position: relative;
+}
+
+
 .main_station_name_box {
   width: 100rem;
   display: inline-block;
@@ -119,12 +125,18 @@ h1.main_station_name {
   margin: auto;
   margin-left: -100%;
   font-family: Noto Serif CJK TC;
+  
+}
+
+.main_station_name_box.eng {
+  
 }
 
 h1.main_station_name.eng {
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   letter-spacing: 0rem;
   font-weight: 700;
+  margin-top: -6.5rem;
 }
 
 .main_info .col-lg-6 {
@@ -317,7 +329,7 @@ h1.main_station_name.eng {
 .transfer_info .transfer_info_item {
   padding: 0;
   margin: 0;
-  margin-bottom: -.6rem;
+  margin-bottom: -.3rem;
 }
 
 .transfer_info tr {
