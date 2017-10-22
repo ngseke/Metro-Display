@@ -100,30 +100,33 @@
 
 @keyframes sub_info_ani {
   0% {
-    display: none;
+    visibility: visible;
+    margin-top: -28rem;
   }
-  /* 維持 */
+ 
   50% {
-    display: none;
+    visibility: hidden;
+    margin-top: 0rem;
   }
-  /* 維持 */
   100% {
-    display: block;
+    visibility: visible;
+    margin-top: -28rem;
   }
 
 }
 
 @keyframes sub_info_ani_eng {
   0% {
-    display: block;
+    visibility: hidden;
   }
 
   50% {
-    display: block;
+   visibility: visible;
+    
   }
 
   100% {
-    display: none;
+   visibility: hidden;
   }
 
 }
@@ -160,15 +163,18 @@ h1.main_station_name.eng {
 
 .btm_area.stations,
 .btm_area.stations.eng {
-  animation-duration: 8s;
+  animation-duration: 20s;
   animation-timing-function: step-end;
   animation-iteration-count: infinite;
 }
 
 .btm_area.stations {
+  
   animation-name: sub_info_ani;
+  
 }
 
 .btm_area.stations.eng {
+
   animation-name: sub_info_ani_eng;
 }
