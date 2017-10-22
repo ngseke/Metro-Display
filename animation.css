@@ -98,11 +98,41 @@
 
 }
 
+@keyframes sub_info_ani {
+  0% {
+    display: none;
+  }
+  /* 維持 */
+  50% {
+    display: none;
+  }
+  /* 維持 */
+  100% {
+    display: block;
+  }
+
+}
+
+@keyframes sub_info_ani_eng {
+  0% {
+    display: block;
+  }
+
+  50% {
+    display: block;
+  }
+
+  100% {
+    display: none;
+  }
+
+}
+
 h1.main_station_name,
 .destination h3,
 .car_num .text_r,
 .car_num .text_l,
-.main_station_number h2{
+.main_station_number h2 {
   animation-duration: 8s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -117,11 +147,28 @@ h1.main_station_name.eng {
 }
 
 .destination h3,
-.car_num .text_r ,.main_station_number h2{
+.car_num .text_r,
+.main_station_number h2 {
   animation-name: main_info_ani;
 }
 
 .destination h3.eng,
-.car_num .text_l,.main_station_number h2.eng {
+.car_num .text_l,
+.main_station_number h2.eng {
   animation-name: main_info_ani_eng;
+}
+
+.btm_area.stations,
+.btm_area.stations.eng {
+  animation-duration: 8s;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+}
+
+.btm_area.stations {
+  animation-name: sub_info_ani;
+}
+
+.btm_area.stations.eng {
+  animation-name: sub_info_ani_eng;
 }
