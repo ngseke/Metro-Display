@@ -3,33 +3,40 @@
   box-sizing: border-box;
 }
 
-body {}
+body {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
 
 body > .container {
   padding: 1rem;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  border: 1px #333 solid;
 }
 
 /* 終點站 外box */
 
 .destination {
-  letter-spacing: .5rem;
+
   padding-left: 2rem;
 }
 
 .destination .for {
+  letter-spacing: .6rem;
   display: inline-block;
   vertical-align: middle;
   width: 5rem;
   text-align: center;
 }
 
+.destination .eng .for{
+  letter-spacing: .2rem;
+} 
+
 .destination h3 {
   font-weight: 700;
 }
 
+
 .destination h3.eng {
-  letter-spacing: 0rem;
   margin-top: -2.75rem;
 }
 
@@ -37,9 +44,21 @@ body > .container {
 /* 終點站文字 badge含底色 */
 
 .destination .badge {
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: .7rem;
+  text-indent: .7rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+.destination .eng .badge {
+  font-weight: 600;
   font-size: 1.5rem;
   letter-spacing: .1rem;
   text-indent: .1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* 跑馬燈文字 */
@@ -374,6 +393,10 @@ td {
 
 /* 路線背景顏色集 */
 
+.bg_color{
+   background: #333;
+}
+
 .bg_color_o {
   background: #ffa400;
   color: black;
@@ -410,7 +433,7 @@ td {
 
 .transfer .title {
   margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .transfer .title span {}
@@ -430,7 +453,8 @@ td {
 }
 
 .transfer-row {
-  height: 17rem;
+  height: 20rem;
+  padding-left: 2rem;
 }
 
 .transfer h2 {
@@ -438,6 +462,8 @@ td {
   text-align: left;
   display: inline-block;
   font-size: 2rem;
+  padding-top: .5rem;
+
 }
 
 .transfer h2 span {
@@ -446,7 +472,11 @@ td {
   font-size: 1.5rem;
 }
 
+.transfer_station{
+  margin-top: rem;
+}
 .transfer_station h3 {
+  margin-top: .5rem;
   text-align: left;
   display: inline-block;
 }
@@ -460,7 +490,13 @@ td {
 .transfer_station .extra{
   color: #777;
   text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: .2rem;
 }
+.transfer_station .extra.eng{
+  font-size: 1rem;
+}
+
 .transfer_station .badge {
   margin-right: 1rem;
 }
@@ -473,6 +509,12 @@ td {
   width: 4.5rem;
   height: 4.5rem;
   font-weight: 600;
+}
+.line_icon_number{
+  width: 4.5rem;
+  padding-left: 0;
+  padding-right: 0;
+    
 }
 
 .line_icon img{

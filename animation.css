@@ -145,7 +145,7 @@ h1.main_station_name,
 .car_num .text_r,
 .car_num .text_l,
 .main_station_number h2 {
-  animation-duration: 8s;
+  animation-duration: 10s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -172,7 +172,7 @@ h1.main_station_name.eng {
 
 .btm_area.stations,
 .btm_area.stations.eng {
-  animation-duration: 10s;
+  animation-duration: 22s;
   animation-timing-function: step-end;
   animation-iteration-count:infinite;
 }
