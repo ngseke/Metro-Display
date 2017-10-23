@@ -22,12 +22,12 @@
       <div class="destination col-6 col-lg-6">
 
         <h3 class="">
-        <span class="for">終點</span>
-        <span class="badge badge-dark bg_color_bl">頂埔</span>
+          <span class="for">終點</span>
+          <span class="badge badge-dark bg_color_bl">頂埔</span>
         </h3>
         <h3 class="eng">
-        <span class="for">For</span>
-        <span class="badge badge-dark bg_color_bl">Dingpu</span>
+          <span class="for">For</span>
+          <span class="badge badge-dark bg_color_bl">Dingpu</span>
         </h3>
 
       </div>
@@ -62,11 +62,29 @@
       <!-- 中 主要車站名稱 -->
       <div class="col12 col-lg-8 text-center">
         <div class="d-none1 main_station_name_box">
-          <h1 class="d-none1 main_station_name">忠孝新生</h1>
-          <h1 class="d-none1 main_station_name eng scale_075">Zhongxiao Xinsheng</h1>
-          <h1 class="d-none main_station_name spacing_005 scale_085">大安森林公園</h1>
+          <h1 class="main_station_name">忠孝新生</h1>
+          <h1 class="main_station_name eng scale_075">Zhongxiao Xinsheng</h1>
         </div>
-
+        <div class="d-none main_station_name_box">
+          <h1 class="main_station_name">台北車站</h1>
+          <h1 class="main_station_name eng scale_075">Taipei Main Station</h1>
+        </div>
+        <div class="d-none main_station_name_box">
+          <h1 class="main_station_name">西 門</h1>
+          <h1 class="main_station_name eng">Ximen</h1>
+        </div>
+        <div class="d-none main_station_name_box">
+          <h1 class="main_station_name ">大安森林公園</h1>
+          <h1 class="main_station_name eng">Daan Park</h1>
+        </div>
+        <div class="d-none main_station_name_box">
+          <h1 class="main_station_name ">國父紀念館</h1>
+          <h1 class="main_station_name eng scale_060">Sun Yat-Sen Memorial Hall</h1>
+        </div>
+        <div class="d-none main_station_name_box">
+          <h1 class="main_station_name ">南港展覽館</h1>
+          <h1 class="main_station_name eng scale_050">Taipei Nangang Exhibition Center</h1>
+        </div>
       </div>
       <!-- 右 LOGO -->
       <div class="d-none col-12 col-lg-2 text-center">
@@ -89,7 +107,34 @@
           </h1>
         </div>
       </div>
-      <div class="row transfer-row align-items-center justify-content-md-center">
+      
+      <div class="d-none1 row transfer-row align-items-center justify-content-md-center">
+        <div class="col-4 item">
+          <div class="row no-gutters align-items-center justify-content-md-start">
+            <div class="row no-gutters align-items-center ">
+              <div class="col text-left">
+                <span class="badge badge-secondary line_icon bg_color_o ">O</span>
+              </div>
+              <div class="col-auto ">
+                <h2>中和新蘆線<span>Zhonghe-Xinlu Line</span></h2>
+              </div>
+            </div>
+            <div class="transfer_station row no-gutters align-items-center justify-content-md-start">
+              <div class="col-auto">
+                <h2><span class="line_icon_number badge badge-secondary bg_color_o">O07</span></h2>
+              </div>
+              <div class="col-auto">
+                <h3>忠孝新生站<span>Zhongxiao Xinsheng Sta.</span></h3>
+              </div>
+              <div class="col-12">
+                <h5 class="extra d-none1">往蘆洲、迴龍、南勢角</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="d-none row transfer-row align-items-center justify-content-md-center">
 
         <div class="col-4 item d-none">
           <div class="row no-gutters align-items-center justify-content-md-start">
@@ -115,7 +160,6 @@
           </div>
         </div>
 
-       
         <div class="col-4 item">
           <div class="row no-gutters align-items-center justify-content-md-start">
             <div class="row no-gutters align-items-center ">
@@ -134,10 +178,10 @@
                 <h3>台北車站<span>Taipei Main Station</span></h3>
               </div>
               <div class="col-12">
-              <h5 class="extra d-none1">往淡水、象山</h5>
+                <h5 class="extra d-none1">往淡水、象山</h5>
               </div>
               <h5 class="extra eng d-none1">To Tamsui, Xiangshan</h5>
-            
+
             </div>
           </div>
         </div>
@@ -159,7 +203,7 @@
                 <h3>台北車站<span>Taipei Main Station</span></h3>
               </div>
               <div class="col-12">
-              <h5 class="extra d-none1">往桃園國際機場、環北</h5>
+                <h5 class="extra d-none1">往桃園國際機場、環北</h5>
               </div>
               <h5 class="extra eng d-none1">To Airport, Huanbei</h5>
             </div>
@@ -214,44 +258,41 @@
       <div class="sub_station_area row align-items-end text-center">
         <div class="col-auto sub_station_blank_l"></div>
         <div class="col">
-
-          <div class="sub_station_name eng">
+          <div id="sub1-eng" class="sub_station_name eng">
             <span>Zhongxiao Fuxing</span></div>
-
           <div class="sub_station_num">BL15</div>
         </div>
         <div class="col">
-          <div class="sub_station_name eng">
+          <div id="sub2-eng" class="sub_station_name eng">
             <span>Zhongxiao Xinsheng</span></div>
-
           <div class="sub_station_num">BL14</div>
         </div>
         <div class="col">
-          <div class="sub_station_name eng">
+          <div id="sub3-eng" class="sub_station_name eng">
             <span>Shandao Temple</span></div>
 
           <div class="sub_station_num ">BL13</div>
         </div>
         <div class="col">
-          <div class="sub_station_name eng">
+          <div id="sub4-eng" class="sub_station_name eng">
             <span>Taipei Main Station</span></div>
 
           <div class="sub_station_num ">BL12</div>
         </div>
         <div class="col">
-          <div class="sub_station_name eng">
+          <div id="sub5-eng" class="sub_station_name eng">
             <span>Ximen</span></div>
 
           <div class="sub_station_num ">BL11</div>
         </div>
         <div class="col">
-          <div class="sub_station_name eng">
+          <div id="sub6-eng" class="sub_station_name eng">
             <span>Longshan Temple</span></div>
 
           <div class="sub_station_num ">BL10</div>
         </div>
         <div class="col">
-          <div class="sub_station_name eng">
+          <div id="sub7-eng" class="sub_station_name eng">
             <span>Jiangzicui</span></div>
 
           <div class="sub_station_num ">BL09</div>
@@ -350,7 +391,7 @@
               </tr>
             </table>
           </div>
-          
+
 
         </div>
         <div class="col">
@@ -375,31 +416,31 @@
       <div class="sub_station_area row align-items-end text-center">
         <div class="col-auto sub_station_blank_l"></div>
         <div class="col">
-          <div class="sub_station_name">忠孝復興</div>
+          <div id="sub1-ch" class="sub_station_name">忠孝復興</div>
           <div class="sub_station_num">BL15</div>
         </div>
         <div class="col">
-          <div class="sub_station_name">忠孝新生</div>
+          <div id="sub2-ch" class="sub_station_name">忠孝新生</div>
           <div class="sub_station_num ">BL14</div>
         </div>
         <div class="col">
-          <div class="sub_station_name">善導寺</div>
+          <div id="sub3-ch" class="sub_station_name">善導寺</div>
           <div class="sub_station_num ">BL13</div>
         </div>
         <div class="col">
-          <div class="sub_station_name">台北車站</div>
+          <div id="sub4-ch" class="sub_station_name">台北車站</div>
           <div class="sub_station_num ">BL12</div>
         </div>
         <div class="col">
-          <div class="sub_station_name">西門</div>
+          <div id="sub5-ch" class="sub_station_name">西門</div>
           <div class="sub_station_num ">BL11</div>
         </div>
         <div class="col">
-          <div class="sub_station_name">龍山寺</div>
+          <div id="sub6-ch" class="sub_station_name">龍山寺</div>
           <div class="sub_station_num ">BL10</div>
         </div>
         <div class="col">
-          <div class="sub_station_name ">江子翠</div>
+          <div id="sub7-ch" class="sub_station_name ">江子翠</div>
           <div class="sub_station_num ">BL09</div>
         </div>
         <div class="col-auto sub_station_blank_r"></div>
@@ -496,7 +537,7 @@
               </tr>
             </table>
           </div>
-          
+
 
         </div>
         <div class="col">
@@ -511,12 +552,19 @@
         </div>
         <div class="col"></div>
         <div class="col"></div>
-        <div class="col-auto sub_station_blank_r" />
+        <div class="col-auto sub_station_blank_r"></div>
       </div>
     </div>
   </div>
 
 
+  <div class="control text-center">
+    <div class="btn-group" role="group">
+      <button type="button" id="previous" class="btn btn-secondary">Previous</button>
+      <button type="button"  class="btn btn-secondary">Depart</button>
+      <button type="button" id="next" class="btn btn-secondary">Next</button>
+    </div>
+  </div>
 
 </body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -524,5 +572,5 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-
+<script src="control.js"></script>
 </html>

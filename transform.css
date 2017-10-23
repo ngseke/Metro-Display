@@ -1,23 +1,23 @@
 
 /* Scale(變形) */
 
-.scale_090 {
+.scale_90 {
   transform: scale(.9, 1);
 }
 
-.scale_085 {
+.scale_85 {
   transform: scale(.85, 1);
 }
 
-.scale_080 {
+.scale_80 {
   transform: scale(.80, 1);
 }
 
-.scale_075 {
+.scale_75 {
   transform: scale(.75, 1);
 }
 
-.scale_070 {
+.scale_70 {
   transform: scale(.70, 1);
 }
 

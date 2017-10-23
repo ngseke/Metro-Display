@@ -443,6 +443,9 @@ td {
   padding-right: 2rem;
 }
 
+.transfer .item{
+border-left: .7rem rgba(0,0,0,.05) solid;  
+}
 
 /* 標題文字 英文 */
 

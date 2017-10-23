@@ -30,7 +30,69 @@
 }
 
 /* 主要車站 翻轉動畫 英文版 */
-@keyframes main_sta_ani_eng {
+@keyframes main_sta_ani_eng_scale_100 {
+  0% {
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  45% {
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  50% {
+    transform-origin: top;
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  95% {
+    transform-origin: bottom;
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: bottom;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+}
+
+
+/* 主要車站 翻轉動畫 英文版 scaleX(.80) */
+@keyframes main_sta_ani_eng_scale_80 {
+  0% {
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.8);
+    opacity: 0;
+  }
+  45% {
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.8);
+    opacity: 0;
+  }
+  50% {
+    transform-origin: top;
+    transform: scaleY(1) scaleX(.8);
+    opacity: 1;
+  }
+
+  95% {
+    transform-origin: bottom;
+    transform: scaleY(1) scaleX(.8);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: bottom;
+    transform: scaleY(0) scaleX(.8);
+    opacity: 0;
+  }
+}
+
+/* 主要車站 翻轉動畫 英文版 scaleX(.75) */
+@keyframes main_sta_ani_eng_scale_75 {
   0% {
     transform-origin: top;
     transform: scaleY(0) scaleX(.75);
@@ -57,8 +119,69 @@
     transform: scaleY(0) scaleX(.75);
     opacity: 0;
   }
-
 }
+
+/* 主要車站 翻轉動畫 英文版 scaleX(.60) */
+@keyframes main_sta_ani_eng_scale_60 {
+  0% {
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.6);
+    opacity: 0;
+  }
+  45% {
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.60);
+    opacity: 0;
+  }
+  50% {
+    transform-origin: top;
+    transform: scaleY(1) scaleX(.60);
+    opacity: 1;
+  }
+
+  95% {
+    transform-origin: bottom;
+    transform: scaleY(1) scaleX(.60);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: bottom;
+    transform: scaleY(0) scaleX(.60);
+    opacity: 0;
+  }
+}
+
+/* 主要車站 翻轉動畫 英文版 scaleX(.50) */
+@keyframes main_sta_ani_eng_scale_50 {
+  0% {
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.50);
+    opacity: 0;
+  }
+  45% {
+    transform-origin: top;
+    transform: scaleY(0) scaleX(.5);
+    opacity: 0;
+  }
+  50% {
+    transform-origin: top;
+    transform: scaleY(1) scaleX(.5);
+    opacity: 1;
+  }
+
+  95% {
+    transform-origin: bottom;
+    transform: scaleY(1) scaleX(.5);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: bottom;
+    transform: scaleY(0) scaleX(.5);
+    opacity: 0;
+  }
+}
+
+
 
 /* 主要資訊 淡出淡入動畫 */
 
@@ -140,7 +263,7 @@
 
 }
 
-h1.main_station_name,
+.main_station_name_box h1.main_station_name,
 .destination h3,
 .car_num .text_r,
 .car_num .text_l,
@@ -150,12 +273,24 @@ h1.main_station_name,
   animation-iteration-count: infinite;
 }
 
-h1.main_station_name {
+.main_station_name_box h1.main_station_name {
   animation-name: main_sta_ani;
 }
 
-h1.main_station_name.eng {
-  animation-name: main_sta_ani_eng;
+.main_station_name_box h1.main_station_name.eng {
+  animation-name: main_sta_ani_eng_scale_100;
+}
+.main_station_name_box h1.main_station_name.eng.scale_80 {
+  animation-name: main_sta_ani_eng_scale_80;
+}
+.main_station_name_box h1.main_station_name.eng.scale_75 {
+  animation-name: main_sta_ani_eng_scale_75;
+}
+.main_station_name_box h1.main_station_name.eng.scale_60 {
+  animation-name: main_sta_ani_eng_scale_60;
+}
+.main_station_name_box h1.main_station_name.eng.scale_50 {
+  animation-name: main_sta_ani_eng_scale_50;
 }
 
 .destination h3,
@@ -172,7 +307,7 @@ h1.main_station_name.eng {
 
 .btm_area.stations,
 .btm_area.stations.eng {
-  animation-duration: 22s;
+  animation-duration: 10s;
   animation-timing-function: step-end;
   animation-iteration-count:infinite;
 }
@@ -186,4 +321,25 @@ h1.main_station_name.eng {
 .btm_area.stations.eng {
 
   animation-name: sub_info_ani_eng;
+}
+
+/**************************************************/
+/* 轉乘資訊動畫 */
+.item{
+  animation-name: item-ani;
+  animation-duration: .5s;  
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+
+}
+
+@keyframes item-ani{
+  0%{
+    opacity: 0;
+    Xtransform:translateX(-1rem);
+  }
+  
+  100%{
+    
+  }
 }
