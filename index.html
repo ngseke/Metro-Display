@@ -8,7 +8,9 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transform.css">
   <link rel="stylesheet" href="animation.css">
+  
 </head>
 
 <body>
@@ -21,7 +23,6 @@
 
         <h3 class="d-non"><span class="for">終點</span><span class="badge badge-dark bg_color_bl">南港展覽館</span></h3>
         <h3 class="eng"><span class="for">For</span><span class="badge badge-dark bg_color_bl">Nangang Exhibition Center</span></h3>
-
 
       </div>
       <!-- 跑馬燈 -->
@@ -70,7 +71,29 @@
       <div class="col div_line bg_color_bl"></div>
     </div>
 
-    <!-- 下半部區塊 -->
+    <!--------下半部區塊-------->
+    <!-- 轉乘資訊 -->
+    <div class="d-none btm_area transfer text-center">
+      <div class="row">
+        <div class="col-12 title">
+          <h1><span class="badge badge-pill badge-dark">轉乘資訊<br><span class="eng">Transfer Information</span></span>
+          </h1>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12">
+          <div class="row no-gutters justify-content-md-center align-items-center ">
+            <div class="col-auto">
+              <span class="badge badge-secondary line_icon bg_color_o">O</span></div>
+            <div class="col-auto">
+              <h2>中和新蘆線<span>Zhonghe-Xinlu Line</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 歡迎畫面 -->
     <div class="d-none btm_area welcome text-center">
       <div class="row align-items-center">
         <div class="col">
@@ -81,7 +104,7 @@
     </div>
 
     <!-- 英文 -->
-    <div class="btm_area stations eng">
+    <div class="d-none1 btm_area stations eng">
       <div class="sub_station_area row align-items-end text-center">
         <div class="col-auto sub_station_blank_l"></div>
         <div class="col">
@@ -172,7 +195,7 @@
             <table class="transfer_info_row">
               <tr>
                 <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_br">BR</span></td>
-                <td class="align-middle"><span class="text">Wenhu Line</span></td>
+                <td class="align-middle"><span class="text eng">Wenhu Line</span></td>
               </tr>
             </table>
           </div>
@@ -182,7 +205,7 @@
             <table class="transfer_info_row">
               <tr>
                 <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_o">O</span></td>
-                <td class="align-middle"><span class="text">Zhonghe-Xinlu Line</span></td>
+                <td class="align-middle"><span class="text eng">Zhonghe-Xinlu Line</span></td>
               </tr>
             </table>
           </div>
@@ -193,7 +216,7 @@
             <table class="transfer_info_row">
               <tr>
                 <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_r">R</span></td>
-                <td class="align-middle"><span class="text">Tamsui-Xinyi Line</span></td>
+                <td class="align-middle"><span class="text eng">Tamsui-Xinyi Line</span></td>
               </tr>
             </table>
           </div>
@@ -217,7 +240,7 @@
             <table class="transfer_info_row">
               <tr>
                 <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_a"><img src="img/airport_logo-01.png" class="img-fluid"></span></td>
-                <td class="align-middle"><span class="text">Taoyuan Airport MRT</span></td>
+                <td class="align-middle"><span class="text eng">Taoyuan Airport MRT</span></td>
               </tr>
             </table>
           </div>
@@ -228,7 +251,7 @@
             <table class="transfer_info_row">
               <tr>
                 <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_g">G</span></td>
-                <td class="align-middle"><span class="text">Songshan-Xindian Line</span></td>
+                <td class="align-middle"><span class="text eng">Songshan-Xindian Line</span></td>
               </tr>
             </table>
           </div>
@@ -240,8 +263,8 @@
     </div>
 
 
-    <!--DEMO: 忠孝新生 to 頂埔 -->
-    <div class="btm_area stations">
+    <!-- 中文 -->
+    <div class="d-none1 btm_area stations">
       <div class="sub_station_area row align-items-end text-center">
         <div class="col-auto sub_station_blank_l"></div>
         <div class="col">
@@ -380,7 +403,7 @@
         </div>
         <div class="col"></div>
         <div class="col"></div>
-        <div class="col-auto sub_station_blank_r"></div>
+        <div class="col-auto sub_station_blank_r" />
       </div>
     </div>
 
@@ -390,8 +413,8 @@
 </body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 
 </html>

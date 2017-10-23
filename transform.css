@@ -1,0 +1,64 @@
+
+/* Scale(變形) */
+
+.scale_090 {
+  transform: scale(.9, 1);
+}
+
+.scale_085 {
+  transform: scale(.85, 1);
+}
+
+.scale_080 {
+  transform: scale(.80, 1);
+}
+
+.scale_075 {
+  transform: scale(.75, 1);
+}
+
+.scale_070 {
+  transform: scale(.70, 1);
+}
+
+/*Letter-Spacing*/
+
+.spacing_005 {
+  text-indent: .05rem;
+  letter-spacing: .05rem;
+}
+
+.spacing_010 {
+  text-indent: .1rem;
+  letter-spacing: .1rem;
+}
+
+.spacing_020 {
+  text-indent: .2rem;
+  letter-spacing: .2rem;
+}
+
+.spacing_030 {
+  text-indent: .3rem;
+  letter-spacing: .3rem;
+}
+
+.spacing_040 {
+  text-indent: .4rem;
+  letter-spacing: .4rem;
+}
+
+.spacing_070 {
+  text-indent: .7rem;
+  letter-spacing: .7rem;
+}
+
+.spacing_080 {
+  text-indent: .8rem;
+  letter-spacing: .8rem;
+}
+
+.spacing_100 {
+  text-indent: 1rem;
+  letter-spacing: 1rem;
+}

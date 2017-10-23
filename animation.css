@@ -1,3 +1,4 @@
+/* 主要車站 翻轉動畫 */
 @keyframes main_sta_ani {
   0% {
     transform-origin: top;
@@ -28,6 +29,7 @@
   }
 }
 
+/* 主要車站 翻轉動畫 英文版 */
 @keyframes main_sta_ani_eng {
   0% {
     transform-origin: top;
@@ -58,6 +60,8 @@
 
 }
 
+/* 主要資訊 淡出淡入動畫 */
+
 @keyframes main_info_ani {
   0% {
     opacity: 1;
@@ -79,6 +83,8 @@
 
 }
 
+/* 主要資訊 淡出淡入動畫 英文 */
+
 @keyframes main_info_ani_eng {
   0% {
     opacity: 0;
@@ -98,6 +104,8 @@
 
 }
 
+/* 次要資訊 顯示消失  */
+
 @keyframes sub_info_ani {
   0% {
     visibility: visible;
@@ -114,6 +122,8 @@
   }
 
 }
+
+/* 次要資訊 顯示消失 英文 */
 
 @keyframes sub_info_ani_eng {
   0% {
@@ -163,9 +173,9 @@ h1.main_station_name.eng {
 
 .btm_area.stations,
 .btm_area.stations.eng {
-  animation-duration: 20s;
+  animation-duration: 10s;
   animation-timing-function: step-end;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
 .btm_area.stations {
