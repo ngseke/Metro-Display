@@ -129,15 +129,16 @@ body > .container {
 
 .main_info .col-lg-8 {
   position: relative;
+  overflow: hidden;
 }
 
-
 .main_station_name_box {
-  width: 100rem;
+  width: 50rem;
   display: inline-block;
   position: relative;
   left: 50%;
   margin-bottom: .5rem;
+
 }
 
 h1.main_station_name {
@@ -148,7 +149,7 @@ h1.main_station_name {
   white-space: nowrap;
   margin: auto;
   margin-left: -100%;
-  afont-family: Noto Serif CJK TC;
+  font-family: Noto Serif CJK TC;
 
 }
 
@@ -404,32 +405,67 @@ td {
 }
 
 /* 轉乘資訊 */
-  /* 上方標題文字 */
-.transfer .title{
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+
+/* 標題文字 */
+
+.transfer .title {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-  /* 上方標題文字 英文 */
-.transfer .title span.eng{
-  display: inline-block;
-  font-size: 1.5rem;
-  margin-top: .5rem;
+.transfer .title span {}
+
+.transfer h1 span.badge {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.transfer h2{
+
+/* 標題文字 英文 */
+
+.transfer .title span.eng {
+  display: inline-block;  
+  margin-left: 1rem;
+  xfont-size: 1.5rem;
+}
+
+.transfer-row {
+  height: 17rem;
+}
+
+.transfer h2 {
   font-weight: 500;
   text-align: left;
-  display: inline-block;  
+  display: inline-block;
   font-size: 2rem;
 }
-.transfer h2 span{
+
+.transfer h2 span {
   margin-top: .5rem;
   display: block;
   font-size: 1.5rem;
 }
 
-.line_icon{
+.transfer_station h3 {
+  text-align: left;
+  display: inline-block;
+}
+
+.transfer_station h3 span {
+  margin-top: .3rem;
+  display: block;
+  font-size: 1.2rem;
+}
+
+.transfer_station .extra{
+  color: #777;
+  text-align: left;
+}
+.transfer_station .badge {
+  margin-right: 1rem;
+}
+
+.line_icon {
   padding-left: 0;
   padding-right: 0;
   font-size: 3rem;
@@ -439,3 +475,8 @@ td {
   font-weight: 600;
 }
 
+.line_icon img{
+  margin-top: -.5rem;
+  display: inline-block;
+  width: 80%;
+}

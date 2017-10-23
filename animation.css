@@ -132,7 +132,6 @@
 
   50% {
    visibility: visible;
-    
   }
 
   100% {
@@ -175,7 +174,7 @@ h1.main_station_name.eng {
 .btm_area.stations.eng {
   animation-duration: 10s;
   animation-timing-function: step-end;
-  animation-iteration-count: 1;
+  animation-iteration-count:infinite;
 }
 
 .btm_area.stations {

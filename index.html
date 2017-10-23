@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="transform.css">
   <link rel="stylesheet" href="animation.css">
-  
+
 </head>
 
 <body>
@@ -73,342 +73,393 @@
 
     <!--------下半部區塊-------->
     <!-- 轉乘資訊 -->
-    <div class="d-none btm_area transfer text-center">
+    <div class="d-none1 btm_area transfer text-center">
       <div class="row">
         <div class="col-12 title">
-          <h1><span class="badge badge-pill badge-dark">轉乘資訊<br><span class="eng">Transfer Information</span></span>
+          <h1><span class="badge badge-dark">
+          <span>轉乘資訊</span>
+            <span class="eng">Transfer Information</span>
+            </span>
           </h1>
         </div>
       </div>
-      <div class="row align-items-center">
-        <div class="col-12">
-          <div class="row no-gutters justify-content-md-center align-items-center ">
-            <div class="col-auto">
-              <span class="badge badge-secondary line_icon bg_color_o">O</span></div>
-            <div class="col-auto">
-              <h2>中和新蘆線<span>Zhonghe-Xinlu Line</span></h2>
+      <div class="row transfer-row no-gutters align-items-center justify-content-md-center">
+        <div class="col-12 item">
+          <div class="row justify-content-md-center">
+            <div class="col-4">
+              <div class="row no-gutters align-items-center ">
+                <div class="col-auto">
+                  <span class="badge badge-secondary line_icon bg_color_o">O</span>
+                </div>
+                <div class="col-auto">
+                  <h2>中和新蘆線<span>Zhonghe-Xinlu Line</span></h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="transfer_station row no-gutters  align-items-center ">
+                <div class="col-auto">
+                  <h2><span class="badge badge-secondary bg_color_o">O07</span></h2>
+                </div>
+                <div class="col-auto">
+                  <h3>忠孝新生站<span>Zhongxiao Xinsheng Sta.</span></h3>
+                  <h5 class="extra d-none">(站外轉乘)</h5>
+                </div>
+                <div class="col-auto">
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="col-12 item">
+          <div class="row justify-content-md-center">
+            <div class="col-4">
+              <div class="row no-gutters align-items-center ">
+                <div class="col-auto">
+                  <span class="badge badge-secondary line_icon bg_color_a"><img src="img/airport_logo-01.png" class="img-fluid"></span>
+                </div>
+                <div class="col-auto">
+                  <h2>桃園機場捷運<span>Taoyuan Airport MRT</span></h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="transfer_station row no-gutters align-items-center ">
+                <div class="col-auto">
+                  <h2><span class="badge badge-secondary bg_color_a">A01</span></h2>
+                </div>
+                <div class="col-auto text-left">
+                  <h3>台北車站<span>Taipei Main Station</span></h3>
+                  <h5 class="extra d-none">(站外轉乘)</h5>
+                </div>
+                <div class="col-auto">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <!-- 歡迎畫面 -->
-    <div class="d-none btm_area welcome text-center">
-      <div class="row align-items-center">
-        <div class="col">
-          <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/c/c7/Metro_Taipei.svg/1280px-Metro_Taipei.svg.png" class="img-fluid welcome_logo">
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 英文 -->
-    <div class="d-none1 btm_area stations eng">
-      <div class="sub_station_area row align-items-end text-center">
-        <div class="col-auto sub_station_blank_l"></div>
-        <div class="col">
-
-          <div class="sub_station_name eng">
-            <span>Zhongxiao Fuxing</span></div>
-
-          <div class="sub_station_num">BL15</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name eng">
-            <span>Zhongxiao Xinsheng</span></div>
-
-          <div class="sub_station_num">BL14</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name eng">
-            <span>Shandao Temple</span></div>
-
-          <div class="sub_station_num ">BL13</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name eng">
-            <span>Taipei Main Station</span></div>
-
-          <div class="sub_station_num ">BL12</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name eng">
-            <span>Ximen</span></div>
-
-          <div class="sub_station_num ">BL11</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name eng">
-            <span>Longshan Temple</span></div>
-
-          <div class="sub_station_num ">BL10</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name eng">
-            <span>Jiangzicui</span></div>
-
-          <div class="sub_station_num ">BL09</div>
-        </div>
-        <div class="col-auto sub_station_blank_r"></div>
-      </div>
-
-      <div class="row route_line">
-        <div class="row no-gutters route_line_bg">
-          <div class="col-auto route_gray_area"></div>
-          <div class="col route_line_color bg_color_bl">
-            <span class="eng">Mins</span>
-          </div>
-          <div class="col-auto route_arrow_box">
-            <div class="route_arrow bg_color_bl"></div>
-          </div>
-        </div>
-        <div class="col-auto sub_station_blank_l"></div>
-        <div class="col">
-          <div class="est_time_block in"><span> </span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>1</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>2</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>4</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>6</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>8</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>12</span></div>
-        </div>
-        <div class="col-auto sub_station_blank_r"></div>
-      </div>
-
-      <div class="row transfer_info">
-        <div class="col-auto sub_station_blank_l"></div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_br">BR</span></td>
-                <td class="align-middle"><span class="text eng">Wenhu Line</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_o">O</span></td>
-                <td class="align-middle"><span class="text eng">Zhonghe-Xinlu Line</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col"></div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_r">R</span></td>
-                <td class="align-middle"><span class="text eng">Tamsui-Xinyi Line</span></td>
-              </tr>
-            </table>
-          </div>
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/tra_logo-01.png" class="img-fluid"></span></td>
-                <td class="align-middle"><span class="text">TRA</span></td>
-              </tr>
-            </table>
-          </div>
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/hsr_logo-01.png" class="img-fluid"></span></td>
-                <td class="align-middle"><span class="text">HSR</span></td>
-              </tr>
-            </table>
-          </div>
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_a"><img src="img/airport_logo-01.png" class="img-fluid"></span></td>
-                <td class="align-middle"><span class="text eng">Taoyuan Airport MRT</span></td>
-              </tr>
-            </table>
-          </div>
-
-        </div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_g">G</span></td>
-                <td class="align-middle"><span class="text eng">Songshan-Xindian Line</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col-auto sub_station_blank_r"></div>
-      </div>
-    </div>
-
-
-    <!-- 中文 -->
-    <div class="d-none1 btm_area stations">
-      <div class="sub_station_area row align-items-end text-center">
-        <div class="col-auto sub_station_blank_l"></div>
-        <div class="col">
-          <div class="sub_station_name">忠孝復興</div>
-          <div class="sub_station_num">BL15</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name">忠孝新生</div>
-          <div class="sub_station_num ">BL14</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name">善導寺</div>
-          <div class="sub_station_num ">BL13</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name">台北車站</div>
-          <div class="sub_station_num ">BL12</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name">西門</div>
-          <div class="sub_station_num ">BL11</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name">龍山寺</div>
-          <div class="sub_station_num ">BL10</div>
-        </div>
-        <div class="col">
-          <div class="sub_station_name ">江子翠</div>
-          <div class="sub_station_num ">BL09</div>
-        </div>
-        <div class="col-auto sub_station_blank_r"></div>
-      </div>
-
-      <div class="row route_line">
-        <div class="row no-gutters route_line_bg">
-          <div class="col-auto route_gray_area"></div>
-          <div class="col route_line_color bg_color_bl">
-            <span class="">分</span>
-          </div>
-          <div class="col-auto route_arrow_box">
-            <div class="route_arrow bg_color_bl"></div>
-          </div>
-        </div>
-        <div class="col-auto sub_station_blank_l"></div>
-        <div class="col">
-          <div class="est_time_block in"><span> </span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>1</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>2</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>4</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>6</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>8</span></div>
-        </div>
-        <div class="col">
-          <div class="est_time_block"><span>12</span></div>
-        </div>
-        <div class="col-auto sub_station_blank_r"></div>
-      </div>
-
-      <div class="row transfer_info">
-        <div class="col-auto sub_station_blank_l"></div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_br">BR</span></td>
-                <td class="align-middle"><span class="text">文湖線</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_o">O</span></td>
-                <td class="align-middle"><span class="text">中和新蘆線</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col"></div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_r">R</span></td>
-                <td class="align-middle"><span class="text">淡水信義線</span></td>
-              </tr>
-            </table>
-          </div>
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/tra_logo-01.png" class="img-fluid"></span></td>
-                <td class="align-middle"><span class="text">台鐵</span></td>
-              </tr>
-            </table>
-          </div>
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/hsr_logo-01.png" class="img-fluid"></span></td>
-                <td class="align-middle"><span class="text">高鐵</span></td>
-              </tr>
-            </table>
-          </div>
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_a"><img src="img/airport_logo-01.png" class="img-fluid"></span></td>
-                <td class="align-middle"><span class="text">桃園機場捷運</span></td>
-              </tr>
-            </table>
-          </div>
-
-        </div>
-        <div class="col">
-          <div class="transfer_info_item">
-            <table class="transfer_info_row">
-              <tr>
-                <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_g">G</span></td>
-                <td class="align-middle"><span class="text">松山新店線</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col-auto sub_station_blank_r" />
-      </div>
-    </div>
-
-
   </div>
+
+  <!-- 歡迎畫面 -->
+  <div class="d-none btm_area welcome text-center">
+    <div class="row align-items-center">
+      <div class="col">
+        <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/c/c7/Metro_Taipei.svg/1280px-Metro_Taipei.svg.png" class="img-fluid welcome_logo">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 英文 -->
+  <div class="d-none btm_area stations eng">
+    <div class="sub_station_area row align-items-end text-center">
+      <div class="col-auto sub_station_blank_l"></div>
+      <div class="col">
+
+        <div class="sub_station_name eng">
+          <span>Zhongxiao Fuxing</span></div>
+
+        <div class="sub_station_num">BL15</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name eng">
+          <span>Zhongxiao Xinsheng</span></div>
+
+        <div class="sub_station_num">BL14</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name eng">
+          <span>Shandao Temple</span></div>
+
+        <div class="sub_station_num ">BL13</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name eng">
+          <span>Taipei Main Station</span></div>
+
+        <div class="sub_station_num ">BL12</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name eng">
+          <span>Ximen</span></div>
+
+        <div class="sub_station_num ">BL11</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name eng">
+          <span>Longshan Temple</span></div>
+
+        <div class="sub_station_num ">BL10</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name eng">
+          <span>Jiangzicui</span></div>
+
+        <div class="sub_station_num ">BL09</div>
+      </div>
+      <div class="col-auto sub_station_blank_r"></div>
+    </div>
+
+    <div class="row route_line">
+      <div class="row no-gutters route_line_bg">
+        <div class="col-auto route_gray_area"></div>
+        <div class="col route_line_color bg_color_bl">
+          <span class="eng">Mins</span>
+        </div>
+        <div class="col-auto route_arrow_box">
+          <div class="route_arrow bg_color_bl"></div>
+        </div>
+      </div>
+      <div class="col-auto sub_station_blank_l"></div>
+      <div class="col">
+        <div class="est_time_block in"><span> </span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>1</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>2</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>4</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>6</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>8</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>12</span></div>
+      </div>
+      <div class="col-auto sub_station_blank_r"></div>
+    </div>
+
+    <div class="row transfer_info">
+      <div class="col-auto sub_station_blank_l"></div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_br">BR</span></td>
+              <td class="align-middle"><span class="text eng">Wenhu Line</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_o">O</span></td>
+              <td class="align-middle"><span class="text eng">Zhonghe-Xinlu Line</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_r">R</span></td>
+              <td class="align-middle"><span class="text eng">Tamsui-Xinyi Line</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/tra_logo-01.png" class="img-fluid"></span></td>
+              <td class="align-middle"><span class="text">TRA</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/hsr_logo-01.png" class="img-fluid"></span></td>
+              <td class="align-middle"><span class="text">HSR</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_a"><img src="img/airport_logo-01.png" class="img-fluid"></span></td>
+              <td class="align-middle"><span class="text eng">Taoyuan Airport MRT</span></td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_g">G</span></td>
+              <td class="align-middle"><span class="text eng">Songshan-Xindian Line</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col-auto sub_station_blank_r"></div>
+    </div>
+  </div>
+
+
+  <!-- 中文 -->
+  <div class="d-none btm_area stations">
+    <div class="sub_station_area row align-items-end text-center">
+      <div class="col-auto sub_station_blank_l"></div>
+      <div class="col">
+        <div class="sub_station_name">忠孝復興</div>
+        <div class="sub_station_num">BL15</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name">忠孝新生</div>
+        <div class="sub_station_num ">BL14</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name">善導寺</div>
+        <div class="sub_station_num ">BL13</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name">台北車站</div>
+        <div class="sub_station_num ">BL12</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name">西門</div>
+        <div class="sub_station_num ">BL11</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name">龍山寺</div>
+        <div class="sub_station_num ">BL10</div>
+      </div>
+      <div class="col">
+        <div class="sub_station_name ">江子翠</div>
+        <div class="sub_station_num ">BL09</div>
+      </div>
+      <div class="col-auto sub_station_blank_r"></div>
+    </div>
+
+    <div class="row route_line">
+      <div class="row no-gutters route_line_bg">
+        <div class="col-auto route_gray_area"></div>
+        <div class="col route_line_color bg_color_bl">
+          <span class="">分</span>
+        </div>
+        <div class="col-auto route_arrow_box">
+          <div class="route_arrow bg_color_bl"></div>
+        </div>
+      </div>
+      <div class="col-auto sub_station_blank_l"></div>
+      <div class="col">
+        <div class="est_time_block in"><span> </span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>1</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>2</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>4</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>6</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>8</span></div>
+      </div>
+      <div class="col">
+        <div class="est_time_block"><span>12</span></div>
+      </div>
+      <div class="col-auto sub_station_blank_r"></div>
+    </div>
+
+    <div class="row transfer_info">
+      <div class="col-auto sub_station_blank_l"></div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_br">BR</span></td>
+              <td class="align-middle"><span class="text">文湖線</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_o">O</span></td>
+              <td class="align-middle"><span class="text">中和新蘆線</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_r">R</span></td>
+              <td class="align-middle"><span class="text">淡水信義線</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/tra_logo-01.png" class="img-fluid"></span></td>
+              <td class="align-middle"><span class="text">台鐵</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s"><img src="img/hsr_logo-01.png" class="img-fluid"></span></td>
+              <td class="align-middle"><span class="text">高鐵</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_a"><img src="img/airport_logo-01.png" class="img-fluid"></span></td>
+              <td class="align-middle"><span class="text">桃園機場捷運</span></td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+      <div class="col">
+        <div class="transfer_info_item">
+          <table class="transfer_info_row">
+            <tr>
+              <td class="align-middle"><span class="badge badge-secondary line_icon_s bg_color_g">G</span></td>
+              <td class="align-middle"><span class="text">松山新店線</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col-auto sub_station_blank_r" />
+    </div>
+  </div>
+
+
+
 
 </body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
