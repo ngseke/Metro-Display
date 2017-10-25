@@ -277,7 +277,7 @@
   animation-name: main_sta_ani;
 }
 
-.main_station_name_box h1.main_station_name.eng {
+.main_station_name_box h1.main_station_name.eng.scale_100 {
   animation-name: main_sta_ani_eng_scale_100;
 }
 .main_station_name_box h1.main_station_name.eng.scale_80 {
@@ -336,7 +336,7 @@
 @keyframes item-ani{
   0%{
     opacity: 0;
-    Xtransform:translateX(-1rem);
+    transform:translateX(-1rem);
   }
   
   100%{
