@@ -1,0 +1,72 @@
+/* 修正icon垂直對齊 */
+i.material-icons{
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+
+/* jumbotron滑入效果 */
+.link.jumbotron, div.link{
+  transition: transform .3s;
+}
+
+.link.jumbotron:hover, div.link:hover{
+  transform: scale(1.05);
+  opacity: .9;
+  cursor: pointer;
+}
+
+/* hover加入pointer效果 */
+.pointer:hover{
+  cursor: pointer;
+}
+
+/* 文字陰影 */
+.text-shadow-dark{
+  text-shadow:0 0 .5rem black;
+}
+
+.text-shadow-light{
+  text-shadow:0 0 .5rem #fff;
+}
+
+.blockquote-footer{
+  color: #eee;
+}
+
+.star{
+  vertical-align: top;
+}
+
+.star i.material-icons{
+  color: #FFBA0C;
+  font-size: 1rem;
+}
+
+.discount{
+  transition: opacity .3s;
+}
+
+.discount:hover{
+  opacity: .8;
+}
+
+/* product.php的各個商品card樣式 */
+.product-item .card{
+  transition: all .3s;
+}
+.product-item:hover{
+  text-decoration: none;
+}
+.product-item .card:hover{
+  /* transform: scale(1.05); */
+  opacity: .7;
+  border-color: #aaa;
+}
+
+/* 滑入背景變色效果 */
+.bg-hover{
+  transition: .4s all;
+}
+.bg-hover:hover{
+  background: #eee;
+}
