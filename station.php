@@ -12,7 +12,7 @@
   <div class="container mt-3">
     <div id="station" class="row">
 
-      <div class="col-12" hidden>
+      <div class="col-12" >
         <ul class="list-group" >
           <li class="list-group-item" v-for="sta in stations">
             <span class="badge text-light" style="min-width:1.8rem" v-bind:style=" 'background:' + sta.ColorCode" >

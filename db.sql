@@ -114,7 +114,7 @@ VALUES('BL', '02', '永寧', 'Yongning'),
       ('BL', '18', '市政府', 'Taipei City Hall'),
       ('BL', '19', '永春', 'Yongchun'),
       ('BL', '20', '後山埤', 'Houshanpi'),
-      ('BL', '21', '昆陽', 'Taipei Arena'),
+      ('BL', '21', '昆陽', 'Kunyang'),
       ('BL', '22', '南港', 'Nangang');
 
 
