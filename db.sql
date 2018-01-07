@@ -14,7 +14,7 @@ CREATE TABLE LINE(
 
 -- 插入路線 ;
 INSERT INTO LINE(Color, Name, Name_EN, ColorCode)
-VALUES('BR', '文湖', 'Wenhu', '##a1662c'),
+VALUES('BR', '文湖', 'Wenhu', '#a1662c'),
       ('R', '淡水信義', 'Tamsui-Xinyi', '#d12a2f'),
       ('G', '松山新店', 'Songshan-Xindian', '#007549'),
       ('O', '中和新蘆', 'Zhonghe-Xinlu', '#ffa400'),
@@ -35,6 +35,35 @@ CREATE TABLE STATION(
   Terminal BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (Color, Num)
 );
+
+-- 插入 BR;
+INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
+VALUES('BR', '01', '動物園', 'Taipei Zoo', TRUE),
+      ('BR', '24', '南港展覽館', 'Taipei Nangang Exhibition Center', TRUE);
+INSERT INTO STATION(Color, Num, Name, Name_EN)
+VALUES('BR', '02', '木柵', 'Muzha'),
+      ('BR', '03', '萬芳社區', 'Wanfang Community'),
+      ('BR', '04', '萬芳醫院', 'Wanfang Hospital'),
+      ('BR', '05', '辛亥', 'Xinhai'),
+      ('BR', '06', '麟光', 'Linguang'),
+      ('BR', '07', '六張犁', 'Liuzhangli'),
+      ('BR', '08', '科技大樓', 'Technology Building'),
+      ('BR', '09', '大安', 'Daan'),
+      ('BR', '10', '忠孝復興', 'Zhongxiao Fuxing'),
+      ('BR', '11', '南京復興', 'Nanjing Fuxing'),
+      ('BR', '12', '中山國中', 'Zhongshan Junior High School'),
+      ('BR', '13', '松山機場', 'Songshan Airport'),
+      ('BR', '14', '大直', 'Dazhi'),
+      ('BR', '15', '劍南路', 'Jiannan Rd.'),
+      ('BR', '16', '西湖', 'Xihu'),
+      ('BR', '17', '港墘', 'Gangqian'),
+      ('BR', '18', '文德', 'Wende'),
+      ('BR', '19', '內湖', 'Neihu'),
+      ('BR', '20', '大湖公園', 'Dahu Park'),
+      ('BR', '21', '葫洲', 'Huzhou'),
+      ('BR', '22', '東湖', 'Donghu'),
+      ('BR', '23', '南港軟體園區', 'Nangang Software Park');
+
 
 -- 插入 R;
 INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
@@ -59,7 +88,7 @@ VALUES('R', '03', '台北101/世貿', 'Taipei 101/World Trade Center'),
       ('R', '18', '明德', 'Mingde'),
       ('R', '19', '石牌', 'Shipai'),
       ('R', '20', '唭哩岸', 'Qilian'),
-      ('R', '21', '奇岩', 'Beitou'),
+      ('R', '21', '奇岩', 'Qiyan'),
       ('R', '22', '北投', 'Beitou'),
       ('R', '23', '復興崗', 'Fuxinggang'),
       ('R', '24', '忠義', 'Zhongyi'),
@@ -90,6 +119,40 @@ VALUES('G', '02', '新店區公所', 'Xindian District Office'),
       ('G', '17', '台北小巨蛋', 'Taipei Arena'),
       ('G', '18', '南京三民', 'Nanjing Sanmin');
 
+-- 插入 O;
+INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
+VALUES('O', '01', '南勢角', 'Nanshijiao', TRUE),
+      ('O', '21', '迴龍', 'Huilong', TRUE),
+      ('O', '54', '蘆洲', 'Luzhou', TRUE);
+
+INSERT INTO STATION(Color, Num, Name, Name_EN)
+VALUES('O', '02', '景安', 'Jingan'),
+      ('O', '03', '永安市場', 'Yongan Market'),
+      ('O', '04', '頂溪', 'Dingxi'),
+      ('O', '05', '古亭', 'Guting'),
+      ('O', '06', '東門', 'Dongmen'),
+      ('O', '07', '忠孝新生', 'Zhongxiao Xinsheng'),
+      ('O', '08', '松江南京', 'Songjiang Nanjing'),
+      ('O', '09', '行天宮', 'Xingtian Temple'),
+      ('O', '10', '中山國小', 'Zhongshan Elementary School'),
+      ('O', '11', '民權西路', 'Minquan W. Rd.'),
+      ('O', '12', '大橋頭', 'Daqiaotou'),
+
+      ('O', '13', '台北橋', 'Taipei Bridge'),
+      ('O', '14', '菜寮', 'Cailiao'),
+      ('O', '15', '三重', 'Sanchong'),
+      ('O', '16', '先嗇宮', 'Xianse Temple'),
+      ('O', '17', '頭前庄', 'Touqianzhuang'),
+      ('O', '18', '新莊', 'Xinzhuang'),
+      ('O', '19', '輔大', 'Fu Jen University'),
+      ('O', '20', '丹鳳', 'Danfeng'),
+
+      ('O', '50', '三重國小', 'Sanchong Elementary School'),
+      ('O', '51', '三和國中', 'Sanhe Junior High School'),
+      ('O', '52', '徐匯中學', 'Saint Ignatius High School'),
+      ('O', '53', '三民高中', 'Sanmin Senior High School');
+
+
 -- 插入 BL;
 INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
 VALUES('BL', '01', '頂埔', 'Dingpu', TRUE),
@@ -117,20 +180,36 @@ VALUES('BL', '02', '永寧', 'Yongning'),
       ('BL', '21', '昆陽', 'Kunyang'),
       ('BL', '22', '南港', 'Nangang');
 
+-- 轉乘 ;
+CREATE TABLE TRANSFER(
+  Color VARCHAR(7) NOT NULL,
+  Num int(2) NOT NULL,
+  TransferColor VARCHAR(7) NOT NULL,
+  TransferNum int(2) NOT NULL,
+  TransferInsideStation BOOLEAN DEFAULT TRUE,
+
+  PRIMARY KEY(Color,Num,TransferColor,TransferNum)
+);
+
+-- 插入轉乘站 ;
+INSERT INTO TRANSFER(Color, Num, TransferColor, TransferNum)
+VALUES('R', '05', 'BR', '09'),
+      ('R', '07', 'O', '06'),
+      ('R', '08', 'G', '10'),
+      ('R', '10', 'BL', '12'),
+      ('R', '11', 'G', '14'),
+      ('R', '13', 'O', '11');
+
 
 
 DROP VIEW IF EXISTS STATION_VIEW;
 CREATE VIEW STATION_VIEW AS
-SELECT S.Color, S.Num, S.Name, S.Name_EN , L.ColorCode
+SELECT S.Color, S.Num, S.Name, S.Name_EN , L.ColorCode, L.TextColorCode
 FROM STATION AS S
 JOIN LINE L ON S.Color = L.Color
+
 ;
 
-
--- 轉乘 ;
--- CREATE TABLE TRANSFER(
---
--- );
 --
 -- CREATE TABLE OPERATION_MODE(
 --

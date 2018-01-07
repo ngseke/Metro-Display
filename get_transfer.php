@@ -2,19 +2,25 @@
 // session_start();
 require_once('connection.php');
 
-$sql = "SELECT * FROM STATION_VIEW WHERE (TRUE)";
+$sql = "SELECT T.Color, T.Num, T.TransferColor, T.TransferNum,
+        L.Name TransferName, L.Name_EN TransferName_EN,
+        L.ColorCode TransferColorCode, L.TextColorCode TransferTextColorCode  FROM TRANSFER T ";
+$sql.= "LEFT JOIN LINE L ON T.TransferColor = L.Color ";
+$sql.= "WHERE (1) ";
 
 if(isset($_GET['Color'])){
   $color = $_GET['Color'];
-  $sql.= ($color!='')? "AND Color = '$color' " :'';
+  $sql.= "AND T.Color = '$color' ";
 }
 
 if(isset($_GET['Num'])){
   $num = $_GET['Num'];
-  $sql.= ($num!='')? "AND Num = '$num' ":'';
+  $sql.= "AND T.Num = '$num' ";
 }
 
-//echo $sql;
+$sql.="";
+
+// echo $sql;
 
 $result = $conn->query($sql);  // $result 存放查詢到的所有物件
 $data = array();
