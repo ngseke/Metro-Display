@@ -193,13 +193,36 @@ CREATE TABLE TRANSFER(
 
 -- 插入轉乘站 ;
 INSERT INTO TRANSFER(Color, Num, TransferColor, TransferNum)
-VALUES('R', '05', 'BR', '09'),
+VALUES('BR', '09', 'R', '05'),
+      ('BR', '10', 'BL', '15'),
+      ('BR', '11', 'G', '16'),
+      ('BR', '24', 'BL', '23'),
+
+      ('R', '05', 'BR', '09'),
       ('R', '07', 'O', '06'),
       ('R', '08', 'G', '10'),
       ('R', '10', 'BL', '12'),
       ('R', '11', 'G', '14'),
-      ('R', '13', 'O', '11');
+      ('R', '13', 'O', '11'),
 
+      ('G', '09', 'O', '05'),
+      ('G', '10', 'R', '08'),
+      ('G', '12', 'BL', '11'),
+      ('G', '14', 'R', '11'),
+      ('G', '15', 'O', '08'),
+      ('G', '16', 'BR', '11'),
+
+      ('O', '05', 'G', '09'),
+      ('O', '06', 'R', '07'),
+      ('O', '07', 'BL', '14'),
+      ('O', '08', 'G', '15'),
+      ('O', '11', 'R', '13'),
+
+      ('BL', '11', 'G', '12'),
+      ('BL', '12', 'R', '10'),
+      ('BL', '14', 'O', '07'),
+      ('BL', '15', 'BR', '10'),
+      ('BL', '23', 'BR', '24');
 
 
 DROP VIEW IF EXISTS STATION_VIEW;
@@ -209,11 +232,6 @@ FROM STATION AS S
 JOIN LINE L ON S.Color = L.Color
 
 ;
-
---
--- CREATE TABLE OPERATION_MODE(
---
--- );
 
 -- SubName VARCHAR(20),
 -- SubName_EN VARCHAR(20),

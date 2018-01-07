@@ -9,9 +9,9 @@
 </head>
 
 <body>
-  <div class="container mt-3">
+  <div class="container my-3">
     <div id="station" class="row">
-      <!-- <button type="button" name="button" v-on:click="PairTransfer()">Set Trans</button> -->
+      <!-- <button type="button" name="button" v-on:click="AddTransfer()">Set Trans</button> -->
 
       <div class="col-4 my-1" v-for="sta in stations">
         <div class="card">
@@ -44,12 +44,11 @@
       data:{
         stations: null,
         transfers: null,
-        color: 'O'
+        color: 'BL'
       },
       created:function(){
         this.GetStations();
         this.GetTransfers();
-        this.PairTransfer();
         // $.get('db.php');
       },
       methods:{
@@ -78,13 +77,14 @@
             },
             async: false
           });
+          this.AddTransfer();
           // $.get('get_transfer.php' , { Color: this.color } ,
           //   function(data){
           //     self.transfers = JSON.parse(data)
           // });
 
         },
-        PairTransfer: function(){
+        AddTransfer: function(){
           var stations = this.stations;
           stations.map((val) => {
             return val.Transfer = new Array();
