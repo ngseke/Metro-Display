@@ -1,0 +1,50 @@
+*{
+  /* border: 1px solid rgba(0,0,255,.5); */
+}
+
+/* 分割線 */
+.divide-line{
+  height: .5rem;
+}
+
+/* ––––Top–––––––––––––––––––––*/
+
+/* 車站編號文字（下一站） */
+.main-sta-num-area .label{
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+/* 車站編號數字（BL01） */
+.main-sta-num-area .num{
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+
+/* 主要車站文字外框 */
+.main-sta-area .box{
+  text-align: center;
+  overflow: hidden;
+
+}
+
+/* 主要車站文字 */
+.main-sta-area .box .name{
+  font-size: 6rem;
+  font-weight: 600;
+  color: #1e1e1e;
+  display: block;
+  text-align: center;
+  white-space:nowrap;
+  transition: all 1s;
+}
+
+.main-sta-area .box .name:not(:first-child){
+  margin-top:-9rem;
+}
+
+.main-sta-area .box .name .text{
+  display: inline-block;
+  transform-origin:left;
+}

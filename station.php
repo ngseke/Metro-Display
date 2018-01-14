@@ -11,9 +11,7 @@
 <body>
   <div class="container my-3">
     <div id="station" class="row">
-      <!-- <button type="button" name="button" v-on:click="AddTransfer()">Set Trans</button> -->
-
-      <div class="col-4 my-1" v-for="sta in stations">
+      <div class="col-4 my-1" v-for="sta in stations" >
         <div class="card">
           <div class="card-body row" >
             <div class="col-2">
@@ -22,12 +20,14 @@
               </span>
             </div>
             <div class="col">
-              <h2 class="mb-1" style=" font-weight:500;">{{sta.Name}}</h2>
+              <h2 class="mb-1" style="font-weight:500;">{{sta.Name}}</h2>
               <h6  style=" font-weight:500;">{{sta.Name_EN}}</h6>
               <p class="my-0 mt-2" v-for="tran in sta.Transfer">
                 <span class="badge align-bottom" style="height:1.5rem;width:1.5rem;padding:.35rem 0;" v-bind:style="GetLineColorStyle(tran.TransferColorCode,tran.TransferTextColorCode)" >
                   {{tran.TransferColor}}
-                </span> {{tran.TransferName}}線
+                </span>
+                <span>{{tran.TransferName}}線</span> <br>
+                <span>{{tran.TransferName_EN}} Line</span>
               </p>
             </div>
           </div>
