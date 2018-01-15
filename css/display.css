@@ -1,4 +1,4 @@
-*{
+:*{
   /* border: 1px solid rgba(0,0,255,.5); */
 }
 
@@ -12,7 +12,7 @@
 /* 終點站 */
 .terminal-area{
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .terminal-area .label{
@@ -71,10 +71,6 @@
   text-align: center;
   white-space:nowrap;
   transition: all 1s;
-}
-
-.main-sta-area .box .name:not(:first-child){
-  margin-top:-9rem;
 }
 
 .main-sta-area .box .name .text{
