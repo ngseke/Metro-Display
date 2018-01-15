@@ -4,7 +4,7 @@
 <script src="js/bootstrap.min.js"></script>
 
 <!-- VUE.JS -->
-<script src="https://vuejs.org/js/vue.js"></script>
+<script src="js/vue.js"></script>
 
 <!-- 防彈跳 -->
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>

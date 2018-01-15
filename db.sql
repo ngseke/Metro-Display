@@ -42,19 +42,19 @@ CREATE TABLE STATION(
 -- 插入 BR;
 INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
 VALUES('BR', '01', '動物園', 'Taipei Zoo', TRUE),
-      ('BR', '24', '南港展覽館', 'Taipei Nangang Exhibition Center', TRUE);
+      ('BR', '24', '南港展覽館', 'Taipei Nangang <br>Exhibition Center', TRUE);
 INSERT INTO STATION(Color, Num, Name, Name_EN)
 VALUES('BR', '02', '木柵', 'Muzha'),
-      ('BR', '03', '萬芳社區', 'Wanfang Community'),
-      ('BR', '04', '萬芳醫院', 'Wanfang Hospital'),
+      ('BR', '03', '萬芳社區', 'Wanfang <br>Community'),
+      ('BR', '04', '萬芳醫院', 'Wanfang <br>Hospital'),
       ('BR', '05', '辛亥', 'Xinhai'),
       ('BR', '06', '麟光', 'Linguang'),
       ('BR', '07', '六張犁', 'Liuzhangli'),
-      ('BR', '08', '科技大樓', 'Technology Building'),
+      ('BR', '08', '科技大樓', 'Technology <br>Building'),
       ('BR', '09', '大安', 'Daan'),
-      ('BR', '10', '忠孝復興', 'Zhongxiao Fuxing'),
-      ('BR', '11', '南京復興', 'Nanjing Fuxing'),
-      ('BR', '12', '中山國中', 'Zhongshan Junior High School'),
+      ('BR', '10', '忠孝復興', 'Zhongxiao <br>Fuxing'),
+      ('BR', '11', '南京復興', 'Nanjing <br>Fuxing'),
+      ('BR', '12', '中山國中', 'Zhongshan Junior <br>High School'),
       ('BR', '13', '松山機場', 'Songshan Airport'),
       ('BR', '14', '大直', 'Dazhi'),
       ('BR', '15', '劍南路', 'Jiannan Rd.'),
@@ -65,7 +65,7 @@ VALUES('BR', '02', '木柵', 'Muzha'),
       ('BR', '20', '大湖公園', 'Dahu Park'),
       ('BR', '21', '葫洲', 'Huzhou'),
       ('BR', '22', '東湖', 'Donghu'),
-      ('BR', '23', '南港軟體園區', 'Nangang Software Park');
+      ('BR', '23', '南港軟體園區', 'Nangang <br>Software Park');
 
 
 -- 插入 R;
@@ -73,14 +73,14 @@ INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
 VALUES('R', '02', '象山', 'Xiangshan', TRUE),
       ('R', '28', '淡水', 'Tamsui', TRUE);
 INSERT INTO STATION(Color, Num, Name, Name_EN)
-VALUES('R', '03', '台北101/世貿', 'Taipei 101/World Trade Center'),
+VALUES('R', '03', '台北101/世貿', 'Taipei 101/ <br>World Trade Center'),
       ('R', '04', '信義安和', 'Xinyi Anhe'),
       ('R', '05', '大安', 'Daan'),
       ('R', '06', '大安森林公園', 'Daan Park'),
       ('R', '07', '東門', 'Dongmen'),
-      ('R', '08', '中正紀念堂', 'Chiang Kai-Shek Memorial Hall'),
-      ('R', '09', '台大醫院', 'National Taiwan University Hospital'),
-      ('R', '10', '台北車站', 'Taipei Main Station'),
+      ('R', '08', '中正紀念堂', 'Chiang Kai-Shek <br>Memorial Hall'),
+      ('R', '09', '台大醫院', 'NTU Hospital'),
+      ('R', '10', '台北車站', 'Taipei Main <br>Station'),
       ('R', '11', '中山', 'Zhongshan'),
       ('R', '12', '雙連', 'Shuanglian'),
       ('R', '13', '民權西路', 'Minquan W. Rd.'),
@@ -104,7 +104,7 @@ INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
 VALUES('G', '01', '新店', 'Xindian', TRUE),
       ('G', '19', '松山', 'Songshan', TRUE);
 INSERT INTO STATION(Color, Num, Name, Name_EN)
-VALUES('G', '02', '新店區公所', 'Xindian District Office'),
+VALUES('G', '02', '新店區公所', 'Xindian District <br>Office'),
       ('G', '03', '七張', 'Qizhang'),
       ('G', '04', '大坪林', 'Dapinglin'),
       ('G', '05', '景美', 'Jingmei'),
@@ -112,12 +112,12 @@ VALUES('G', '02', '新店區公所', 'Xindian District Office'),
       ('G', '07', '公館', 'Gongguan'),
       ('G', '08', '台電大樓', 'Taipower Building'),
       ('G', '09', '古亭', 'Guting'),
-      ('G', '10', '中正紀念堂', 'Chiang Kai-Shek Memorial Hall'),
+      ('G', '10', '中正紀念堂', 'Chiang Kai-Shek <br>Memorial Hall'),
       ('G', '11', '小南門', 'Xiaonanmen'),
       ('G', '12', '西門', 'Ximen'),
       ('G', '13', '北門', 'Beimen'),
       ('G', '14', '中山', 'Zhongshan'),
-      ('G', '15', '松江南京', 'Songjiang Nanjing'),
+      ('G', '15', '松江南京', 'Songjiang <br>Nanjing'),
       ('G', '16', '南京復興', 'Nanjing Fuxing'),
       ('G', '17', '台北小巨蛋', 'Taipei Arena'),
       ('G', '18', '南京三民', 'Nanjing Sanmin');
@@ -134,10 +134,10 @@ VALUES('O', '02', '景安', 'Jingan'),
       ('O', '04', '頂溪', 'Dingxi'),
       ('O', '05', '古亭', 'Guting'),
       ('O', '06', '東門', 'Dongmen'),
-      ('O', '07', '忠孝新生', 'Zhongxiao Xinsheng'),
-      ('O', '08', '松江南京', 'Songjiang Nanjing'),
+      ('O', '07', '忠孝新生', 'Zhongxiao <br>Xinsheng'),
+      ('O', '08', '松江南京', 'Songjiang <br>Nanjing'),
       ('O', '09', '行天宮', 'Xingtian Temple'),
-      ('O', '10', '中山國小', 'Zhongshan Elementary School'),
+      ('O', '10', '中山國小', 'Zhongshan <br>Elementary School'),
       ('O', '11', '民權西路', 'Minquan W. Rd.'),
       ('O', '12', '大橋頭', 'Daqiaotou'),
 
@@ -150,33 +150,33 @@ VALUES('O', '02', '景安', 'Jingan'),
       ('O', '19', '輔大', 'Fu Jen University'),
       ('O', '20', '丹鳳', 'Danfeng'),
 
-      ('O', '50', '三重國小', 'Sanchong Elementary School'),
-      ('O', '51', '三和國中', 'Sanhe Junior High School'),
-      ('O', '52', '徐匯中學', 'Saint Ignatius High School'),
-      ('O', '53', '三民高中', 'Sanmin Senior High School');
+      ('O', '50', '三重國小', 'Sanchong <br>Elementary School'),
+      ('O', '51', '三和國中', 'Sanhe Junior <br>High School'),
+      ('O', '52', '徐匯中學', 'Saint Ignatius <br>High School'),
+      ('O', '53', '三民高中', 'Sanmin Senior <br>High School');
 
 
 -- 插入 BL;
 INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
 VALUES('BL', '01', '頂埔', 'Dingpu', TRUE),
-      ('BL', '23', '南港展覽館', 'Taipei Nangang Exhibition Center', TRUE);
+      ('BL', '23', '南港展覽館', 'Taipei Nangang <br>Exhibition Center', TRUE);
 INSERT INTO STATION(Color, Num, Name, Name_EN)
 VALUES('BL', '02', '永寧', 'Yongning'),
       ('BL', '03', '土城', 'Tucheng'),
       ('BL', '04', '海山', 'Haishan'),
-      ('BL', '05', '亞東醫院', 'Far Eastern Hospital'),
+      ('BL', '05', '亞東醫院', 'Far Eastern <br>Hospital'),
       ('BL', '06', '府中', 'Fuzhong'),
       ('BL', '07', '板橋', 'Banqiao'),
       ('BL', '08', '新埔', 'Xinpu'),
       ('BL', '09', '江子翠', 'Jiangzicui'),
       ('BL', '10', '龍山寺', 'Longshan Temple'),
       ('BL', '11', '西門', 'Ximen'),
-      ('BL', '12', '台北車站', 'Taipei Main Station'),
+      ('BL', '12', '台北車站', 'Taipei Main <br>Station'),
       ('BL', '13', '善導寺', 'Shandao Temple'),
-      ('BL', '14', '忠孝新生', 'Zhongxiao Xinsheng'),
-      ('BL', '15', '忠孝復興', 'Zhongxiao Fuxing'),
-      ('BL', '16', '忠孝敦化', 'Zhongxiao Dunhua'),
-      ('BL', '17', '國父紀念館', 'Sun Yat-Sen Memorial Hall'),
+      ('BL', '14', '忠孝新生', 'Zhongxiao <br>Xinsheng'),
+      ('BL', '15', '忠孝復興', 'Zhongxiao <br>Fuxing'),
+      ('BL', '16', '忠孝敦化', 'Zhongxiao <br>Dunhua'),
+      ('BL', '17', '國父紀念館', 'Sun Yat-Sen <br>Memorial Hall'),
       ('BL', '18', '市政府', 'Taipei City Hall'),
       ('BL', '19', '永春', 'Yongchun'),
       ('BL', '20', '後山埤', 'Houshanpi'),

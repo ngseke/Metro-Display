@@ -14,6 +14,11 @@ if(isset($_GET['Num'])){
   $sql.= ($num!='')? "AND Num = '$num' ":'';
 }
 
+if(isset($_GET['OrderBy'])){
+  $orderBy = ($_GET['OrderBy']=='true')?'ASC':'DESC';
+  $sql.= ($orderBy!='')? "ORDER BY Num ".$orderBy :'';
+}
+
 //echo $sql;
 
 $result = $conn->query($sql);  // $result 存放查詢到的所有物件

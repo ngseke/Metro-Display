@@ -11,7 +11,7 @@
 
 /* 終點站 */
 .terminal-area{
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
 }
 
@@ -78,7 +78,56 @@
   transform-origin:left;
 }
 
+/* -––––––––––––––––––––––––– */
+
 /* 分割線 */
-.divide-line{
+.divide-line {
   height: .8rem;
+}
+
+.btm-area *{
+  /* border: 1px solid rgba(0,0,255,.5); */
+}
+.btm-area{
+  /* overflow: hidden; */
+}
+.sub-sta-area .row{
+  min-height: 22rem;
+}
+.sub-sta-area .box {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 600;
+  width: 5rem;
+  font-size: 2.8rem;
+}
+.sub-sta-area .box .name.CH{
+  writing-mode: vertical-rl;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.sub-sta-area .box .name.EN{
+  font-weight: 500;
+  display: block;
+  overflow: visible;
+  width: 22rem;
+  text-align: left;
+  line-height:2.8rem;
+  transform-origin: left bottom;
+  transform: translateX(3rem) rotate(-60deg);
+  white-space:nowrap;
+}
+
+.sub-sta-area .box .name .text{
+  display: inline-block;
+  transform-origin: left center;
+  width: auto;
+}
+
+.sub-sta-area .box .num{
+  font-size: 1.5rem;
 }
