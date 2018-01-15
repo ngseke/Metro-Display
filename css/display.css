@@ -2,23 +2,56 @@
   /* border: 1px solid rgba(0,0,255,.5); */
 }
 
-/* 分割線 */
-.divide-line{
-  height: .5rem;
+/* ––––Top–––––––––––––––––––––*/
+
+.top-area{
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
-/* ––––Top–––––––––––––––––––––*/
+/* 終點站 */
+.terminal-area{
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.terminal-area .label{
+  vertical-align: middle;
+  display: block;
+}
+
+.terminal-area .name{
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.terminal-area .CH.name span{
+  letter-spacing: .5rem;
+  padding-left: .5rem;
+}
+
+/* 車號 */
+.car-num-area{
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.car-num-area .num{
+  font-size: 2rem;
+  vertical-align:middle;
+}
 
 /* 車站編號文字（下一站） */
 .main-sta-num-area .label{
-  font-size: 2.5rem;
-  font-weight: 500;
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: block;
 }
 
 /* 車站編號數字（BL01） */
 .main-sta-num-area .num{
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 
@@ -47,4 +80,9 @@
 .main-sta-area .box .name .text{
   display: inline-block;
   transform-origin:left;
+}
+
+/* 分割線 */
+.divide-line{
+  height: .8rem;
 }

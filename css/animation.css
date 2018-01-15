@@ -1,4 +1,4 @@
-@keyframes enter{
+@keyframes flip-enter{
   0% {
     transform-origin: top;
     transform: scaleY(0);
@@ -10,7 +10,7 @@
     opacity: 1;
   }
 }
-@keyframes leave{
+@keyframes flip-leave{
   0% {
     transform-origin: bottom;
     transform: scaleY(1);
@@ -23,12 +23,31 @@
   }
 }
 
-.name-enter-active{
-  animation: enter .8s;
+@keyframes fade-in{
+  0%   { opacity: 0;}
+  100% { opacity: 1;}
+}
+@keyframes fade-out{
+  0%   {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.flip-enter{
+  animation: flip-enter .8s;
   animation-fill-mode: forwards;
 }
 
-.name-leave-active{
-  animation: leave .8s;
+.flip-leave{
+  animation: flip-leave .8s;
+  animation-fill-mode: forwards;
+}
+
+.fade-in{
+  animation: fade-in .8s;
+  animation-fill-mode: forwards;
+}
+
+.fade-out{
+  animation: fade-out .8s;
   animation-fill-mode: forwards;
 }
