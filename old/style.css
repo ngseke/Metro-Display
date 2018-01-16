@@ -29,7 +29,7 @@ body > .container {
 
 .destination .eng .for{
   letter-spacing: .2rem;
-} 
+}
 
 .destination h3 {
   font-weight: 700;
@@ -298,7 +298,7 @@ h1.main_station_name.eng {
 .route_arrow {
   z-index: 0;
   width: 0;
-  height: 0;
+  height:100%;
   border: transparent 1.5rem solid;
   border-left: #005cb9 1.5rem solid;
 }
@@ -444,13 +444,13 @@ td {
 }
 
 .transfer .item{
-border-left: .7rem rgba(0,0,0,.05) solid;  
+border-left: .7rem rgba(0,0,0,.05) solid;
 }
 
 /* 標題文字 英文 */
 
 .transfer .title span.eng {
-  display: inline-block;  
+  display: inline-block;
   margin-left: 1rem;
   xfont-size: 1.5rem;
 }
@@ -517,7 +517,7 @@ border-left: .7rem rgba(0,0,0,.05) solid;
   width: 4.5rem;
   padding-left: 0;
   padding-right: 0;
-    
+
 }
 
 .line_icon img{

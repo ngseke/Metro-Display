@@ -79,40 +79,87 @@
 
     <!-- 底部區塊 -->
     <div class="btm-area" >
+      <!-- 副站名 -->
       <div class="container sub-sta-area">
-        <div class="row align-items-end">
+        <div class="row name-area align-items-end">
           <template v-for="index in 7">
             <div class="col">
               <div :class="'box'+index" class="box">
-                <div class="name CH" v-if="IsSubStaShow('CH')">
-                  <span class="text" :style="GetSubStaTextStyle('CN',index)">{{GetSubStaName('CH',index-2)}}</span>
+                <!-- 副站名CH -->
+                <div class="name CH" v-show="IsSubStaShow('CH')">
+                  <span class="text" :style="GetSubStaTextStyle('CN',index)">
+                    {{GetSubStaName('CH',index-2)}}
+                  </span>
                 </div>
-                <div class="name EN" v-if="IsSubStaShow('EN')" >
-                  <span class="text " :style="GetSubStaTextStyle('EN',index)" v-html="GetSubStaName('EN',index-2)"></span>
+                <!-- 副站名EN-->
+                <div class="name EN" v-show="IsSubStaShow('EN')" >
+                  <span class="text" :style="GetSubStaTextStyle('EN',index)" v-html="GetSubStaName('EN',index-2)">Stations</span>
                 </div>
-                <div class="num">
-                  {{GetSubStaNum(index-2)}}
+                <div class="num">{{GetSubStaNum(index-2)}}</div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <!-- 軌道條(預計時間) -->
+      <div class="container-fluid sub-sta-area position-relative"  style="z-index:1" >
+        <div class="container" >
+          <div class="row route-area align-items-center">
+            <template v-for="index in 7" >
+              <div class="col text-center" style="z-index:999">
+                <div class="time-box" hidden>
+                  <span class="text">{{index}}</span>
                 </div>
               </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="container" style=" height:3.4rem; margin-top:-3.4rem" :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)">
+          <div class="row">
+            <template v-for="index in 7" style=" ">
+              <div class="col my-0" style="height:3.4rem; z-index:5;">
+                <!-- 灰塊 -->
+                <div v-if="index==1" style="background:gray; height:100%; z-index:999; transform:translateX(0%)">
+                  <div v-if="index==1" style="background:gray; height:100%; transform:translateX(-99%)"></div>
+                </div>
+                <!-- 藍塊 -->
+                <div class="py-0" v-if="index==7" style="background:white; transform:translateX(100%)">
+                  <div class="my-0 route-arrow" style="z-index:999;" :style="GetRouteArrowStyle()"></div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container">
+        <div class="row trans-area">
+          <template v-for="index in 7">
+            <div class="col">
               <template v-for="tran in GetSubStaTransfer(index-2)">
                 <span class="badge align-bottom" style="height:1.5rem;width:1.5rem;padding:.35rem 0;" v-bind:style="GetLineColorStyle(tran.TransferColorCode,tran.TransferTextColorCode)" >
                   {{tran.TransferColor}}
                 </span>
                 <span>{{tran.TransferName}}線</span> <br>
-                <span>{{tran.TransferName_EN}} Line</span>
+                <!-- <span>{{tran.TransferName_EN}} Line</span> -->
               </template>
             </div>
           </template>
         </div>
       </div>
-    </div>
 
+    </div>
+    <div style="height:5rem;">
+      {{G1('EN',1)}}
+    </div>
     <!-- 控制器 -->
     <div>
       <button @click="ToggleMainStaLang(1)" type="button" class="btn btn-secondary">Toggle Main</button>
       <button @click="ToggleSubStaLang(1)" type="button" class="btn btn-secondary">Toggle Sub</button>
       <button @click="ToggleDirection()" type="button" class="btn btn-secondary">切換行車方向</button>
-      <select v-model="color" @change="ChangeColor()" class="form-control d-inline-block" style=" width:5rem;">
+      <select v-model="color" @change="ResetSta()" class="form-control d-inline-block" style=" width:5rem;">
         <template v-for="l in lines">
           <option :value="l.Color">{{l.Color}}</option>
         </template>

@@ -1,9 +1,15 @@
-:*{
+*{
   /* border: 1px solid rgba(0,0,255,.5); */
 }
 
-/* ––––Top–––––––––––––––––––––*/
+body{
+  color: #1e1e1e;
+}
 
+/* ––––Top–––––––––––––––––––––*/
+#display{
+  overflow: hidden;
+}
 .top-area{
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
@@ -22,7 +28,7 @@
 
 .terminal-area .name{
   font-size: 1.8rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .terminal-area .CH.name span{
@@ -43,7 +49,7 @@
 
 /* 車站編號文字（下一站） */
 .main-sta-num-area .label{
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
   display: block;
 }
@@ -64,7 +70,7 @@
 
 /* 主要車站文字 */
 .main-sta-area .box .name{
-  font-size: 6rem;
+  font-size: 7.4rem;
   font-weight: 600;
   color: #1e1e1e;
   display: block;
@@ -85,14 +91,12 @@
   height: .8rem;
 }
 
-.btm-area *{
+.btm-area .sub-sta-area *{
   /* border: 1px solid rgba(0,0,255,.5); */
 }
-.btm-area{
-  /* overflow: hidden; */
-}
-.sub-sta-area .row{
-  min-height: 22rem;
+
+.sub-sta-area .name-area{
+  min-height: 18rem;
 }
 .sub-sta-area .box {
   text-align: center;
@@ -130,4 +134,35 @@
 
 .sub-sta-area .box .num{
   font-size: 1.5rem;
+}
+
+/* ––––––––––––––––––––––––––––––– */
+
+.sub-sta-area .route-area{
+  height: 3.4rem;
+}
+
+.sub-sta-area .route-area .time-box{
+  background: rgba(255,255,255,.8);
+  width:4rem;
+  height:2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.sub-sta-area .route-area .time-box .text{
+  color: #1e1e1e;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.route-arrow {
+  z-index: 0;
+  width: 0;
+  height: 0;
+  border: transparent 1.5rem solid;
+  border-left: red 1.5rem solid;
 }
