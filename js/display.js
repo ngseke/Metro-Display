@@ -4,20 +4,23 @@ var vm = new Vue({
 		lines:[],
 		stations: [],
 		transfers: [],
+		timer: null,      // 為了解決$選擇器延遲bug的無用計數器
+		timerCounter: true,  //
 		color: 'BL',      // 當前路線顏色
 		terminal: 0,      // 終點站編號 index
 		direction: true,  // [行車方向] true:由小起點 false:由大起點
 		carNum: 5,        // 車號
 		curr: 10,     		  // 當前主車站 index
+		// ––––––––––––––––––––––––––––––––
 		mainStaLangPlayed: 0,
 		mainStaLang: 0,                // 當前主車站語言
 		mainStaLangTimer: null,        // 主車站語言計數器(自動切換語言)
 		mainStaLangTimerDelay: 3000,   // 當前主車站語言Delay毫秒
 		langList:['CH','EN'],          // 語言列表
 		// ––––––––––––––––––––––––––––––––
-		subStaLang: 1,     					 // 副車站語言
+		subStaLang: 0,     					 // 副車站語言
 		subStaLangTimer: null,       //
-		subStaLangTimerDelay: 1000,   //
+		subStaLangTimerDelay: 6000,  //
 	},
 	created:function(){
 		this.FetchLines();
@@ -27,11 +30,14 @@ var vm = new Vue({
 	mounted:function(){
 		// 設置主車站Timer
 		this.mainStaLangTimer = setInterval(() => {
-			this.ToggleMainStaLang()
+			this.ToggleMainStaLang();
 		}, this.mainStaLangTimerDelay);
-		// this.subStaLangTimer = setInterval(() => {
-		// 	this.ToggleSubStaLang()
-		// }, this.subStaLangTimerDelay);
+		this.subStaLangTimer = setInterval(() => {
+			this.ToggleSubStaLang();
+		}, this.subStaLangTimerDelay);
+		this.timer = setInterval(() => {
+			this.timerCounter=!this.timerCounter;
+		}, 10);
 	},
 	methods:{
 		ResetSta:function() {
@@ -147,7 +153,10 @@ var vm = new Vue({
 			var index=this.curr + num
 			if (index>=0&&index<stations.length) {
 				switch (lang) {
-					case 'CH': return stations[index].Name;
+					case 'CH':
+					return(stations[index].Name.length==2) // 若只有兩字元在中間插入全形空格
+						? stations[index].Name[0]+'　'+stations[index].Name[1]
+						: stations[index].Name;
 					case 'EN': return stations[index].Name_EN;
 					default  : return '';
 				}
@@ -195,26 +204,11 @@ var vm = new Vue({
 				var originalWidth = $('.sub-sta-area .box'+ index +'  .name.'+lang+' span.text').innerWidth()+80;
 				var realHeight = originalWidth * Math.sin(60/180*Math.PI);
 				var BoxHeight = $('.sub-sta-area .name-area').outerHeight()-$('.sub-sta-area .name-area .num').outerHeight();
-				console.log(BoxHeight);
 				var percent = Math.min((BoxHeight / realHeight), 1);
 				var style = {
 					transform: 'scaleX('+ percent +')',
 				}
 				return style;
-			}else{
-				return '';
-			}
-		},
-		G1:function(lang='EN',index=0){ // TESTTTTTTTTTTTTTT
-			if(lang=='EN'){
-				var originalWidth = $('.sub-sta-area .box'+ index +'  .name.'+lang+' span.text').innerWidth()+80;
-				var realHeight = originalWidth * Math.sin(60/180*3.14);
-				var BoxHeight = $('.sub-sta-area .name-area').outerHeight()-$('.sub-sta-area .name-area .num').outerHeight();
-				var percent = Math.min((BoxHeight / realHeight), 1);
-				var style = {
-					transform: 'scaleX('+ percent +')',
-				}
-				return originalWidth;
 			}else{
 				return '';
 			}
@@ -297,5 +291,11 @@ var vm = new Vue({
 		},
 	},
 	computed:{
-	}
+
+	},
+	components: {
+    // 'sub-station': {
+    //
+		// }
+  }
 });

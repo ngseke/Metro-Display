@@ -83,7 +83,7 @@
       <div class="container sub-sta-area">
         <div class="row name-area align-items-end">
           <template v-for="index in 7">
-            <div class="col">
+            <div class="col" :class="{'passed-sta':(index==1)}">
               <div :class="'box'+index" class="box">
                 <!-- 副站名CH -->
                 <div class="name CH" v-show="IsSubStaShow('CH')">
@@ -93,7 +93,7 @@
                 </div>
                 <!-- 副站名EN-->
                 <div class="name EN" v-show="IsSubStaShow('EN')" >
-                  <span class="text" :style="GetSubStaTextStyle('EN',index)" v-html="GetSubStaName('EN',index-2)">Stations</span>
+                  <span class="text" v-html="GetSubStaName('EN',index-2)" :style="GetSubStaTextStyle('EN',index)"></span>
                 </div>
                 <div class="num">{{GetSubStaNum(index-2)}}</div>
               </div>
@@ -107,14 +107,13 @@
           <div class="row route-area align-items-center">
             <template v-for="index in 7" >
               <div class="col text-center" style="z-index:999">
-                <div class="time-box" hidden>
-                  <span class="text">{{index}}</span>
+                <div class="time-box rounded" :class="{'passed-sta':(index==1)}">
+                  <span class="text" v-if="!(index==1)">{{index*2}}</span>
                 </div>
               </div>
             </template>
           </div>
         </div>
-
         <div class="container" style=" height:3.4rem; margin-top:-3.4rem" :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)">
           <div class="row">
             <template v-for="index in 7" style=" ">
@@ -124,50 +123,62 @@
                   <div v-if="index==1" style="background:gray; height:100%; transform:translateX(-99%)"></div>
                 </div>
                 <!-- 藍塊 -->
-                <div class="py-0" v-if="index==7" style="background:white; transform:translateX(100%)">
-                  <div class="my-0 route-arrow" style="z-index:999;" :style="GetRouteArrowStyle()"></div>
+                <div class="py-0 position-relative" v-if="index==7" style="background:white; transform:translateX(100%)">
+                  <div class="position-absolute" style=" height:100%;z-index:999; display:flex;align-items:center;justify-content:center;">
+                    <span style="transform:translateX(-1.5rem)">(分)</span>
+                  </div>
+                  <div class="my-0 route-arrow" style="z-index:100; transform:translateX(0)" :style="GetRouteArrowStyle()"></div>
                 </div>
               </div>
             </template>
           </div>
         </div>
-
       </div>
 
-      <div class="container">
+      <!-- 轉乘資訊 -->
+      <div class="container py-1">
         <div class="row trans-area">
           <template v-for="index in 7">
             <div class="col">
-              <template v-for="tran in GetSubStaTransfer(index-2)">
-                <span class="badge align-bottom" style="height:1.5rem;width:1.5rem;padding:.35rem 0;" v-bind:style="GetLineColorStyle(tran.TransferColorCode,tran.TransferTextColorCode)" >
-                  {{tran.TransferColor}}
-                </span>
-                <span>{{tran.TransferName}}線</span> <br>
-                <!-- <span>{{tran.TransferName_EN}} Line</span> -->
-              </template>
+              <div class="trans" v-for="tran in GetSubStaTransfer(index-2)">
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <span class="badge line-icon " v-bind:style="GetLineColorStyle(tran.TransferColorCode,tran.TransferTextColorCode)" >
+                      {{tran.TransferColor}}
+                    </span>
+                  </div>
+                  <div class="col">
+                    <span class="text CH" v-if="IsSubStaShow('CH')">{{tran.TransferName}}線</span>
+                    <span class="text EN" v-if="IsSubStaShow('EN')">{{tran.TransferName_EN}} Line</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </template>
         </div>
       </div>
-
     </div>
     <div style="height:5rem;">
-      {{G1('EN',1)}}
     </div>
     <!-- 控制器 -->
-    <div>
-      <button @click="ToggleMainStaLang(1)" type="button" class="btn btn-secondary">Toggle Main</button>
-      <button @click="ToggleSubStaLang(1)" type="button" class="btn btn-secondary">Toggle Sub</button>
-      <button @click="ToggleDirection()" type="button" class="btn btn-secondary">切換行車方向</button>
-      <select v-model="color" @change="ResetSta()" class="form-control d-inline-block" style=" width:5rem;">
-        <template v-for="l in lines">
-          <option :value="l.Color">{{l.Color}}</option>
-        </template>
-      </select>
-      <div class="btn-group">
-        <button @click="Toggle(-1)" type="button" class="btn btn-secondary"><</button>
-        <button @click="Toggle(1)" type="button" class="btn btn-secondary">></button>
-        <input v-model="curr" @keyup.left="Toggle(-1)" @keyup.right="Toggle(1)">
+    <div class="container my-3">
+      <span hidden>{{timerCounter}}</span>
+      <div class="card">
+        <div class="card-body">
+          <button @click="ToggleMainStaLang(1)" type="button" class="btn btn-dark">Toggle Main</button>
+          <button @click="ToggleSubStaLang(1)" type="button" class="btn btn-dark">Toggle Sub</button>
+          <button @click="ToggleDirection()" type="button" class="btn btn-dark">切換行車方向</button>
+          <select v-model="color" @change="ResetSta()" class="form-control d-inline-block" style=" width:5rem;">
+            <template v-for="l in lines">
+              <option :value="l.Color">{{l.Color}}</option>
+            </template>
+          </select>
+          <div class="btn-group">
+            <button @click="Toggle(-1)" type="button" class="btn btn-dark"><</button>
+            <button @click="Toggle(1)" type="button" class="btn btn-dark">></button>
+            <input v-model="curr" @keyup.left="Toggle(-1)" @keyup.right="Toggle(1)">
+          </div>
+        </div>
       </div>
     </div>
   </div>

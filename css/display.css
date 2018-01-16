@@ -91,7 +91,7 @@ body{
   height: .8rem;
 }
 
-.btm-area .sub-sta-area *{
+.btm-area  *{
   /* border: 1px solid rgba(0,0,255,.5); */
 }
 
@@ -165,4 +165,28 @@ body{
   height: 0;
   border: transparent 1.5rem solid;
   border-left: red 1.5rem solid;
+}
+
+.passed-sta{
+  opacity: .5;
+}
+
+.line-icon{
+  height: 1.8rem;
+  width: 1.8rem;
+  padding: .35rem 0;
+  font-size: 1rem;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
+.trans .row{
+  height: 2.5rem;
+}
+
+.trans-area .trans .text{
+  display: block;
+  font-weight: 500;
+  line-height: 1.2rem;
+  margin-left: .2rem;
 }
