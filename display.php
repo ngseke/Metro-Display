@@ -20,7 +20,7 @@
               <span class="label" :class="GetAniClass('CH', 'fade')">終  點</span>
               <span class="label" :class="GetAniClass('EN', 'fade')" :style="GetTerminalLabelStyle('EN')">To</span>
             </div>
-            <div class="col-6 col-lg-9">
+            <div class="col-6 col-lg-auto">
               <div class="box" :class="GetAniClass('CH', 'fade')" >
                 <span class="badge badge-dark name CH px-3"
                 :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)"><span>{{GetTerminal('CH')}}</span></span>
@@ -29,6 +29,18 @@
                 <span class="badge badge-dark name EN px-4"
                 :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)"><span>{{GetTerminal('EN')}}</span></span>
               </div>
+              <div class="box" :class="GetAniClass('JP', 'fade')" :style="GetTerminalBoxStyle('JP')">
+                <span class="badge badge-dark name JP px-3"
+                :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)"><span>{{GetTerminal('JP')}}ディンプー</span></span>
+              </div>
+              <div class="box" :class="GetAniClass('KR', 'fade')" :style="GetTerminalBoxStyle('KR')">
+                <span class="badge badge-dark name KR px-3"
+                :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)"><span>{{GetTerminal('KR')}}딩푸</span></span>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3 text-left">
+              <span class="label" :class="GetAniClass('JP', 'fade')">ゆき</span>
+              <span class="label" :class="GetAniClass('KR', 'fade')" :style="GetTerminalLabelStyle('KR')">행</span>
             </div>
           </div>
         </div>
@@ -46,6 +58,8 @@
             <div class="col-8 text-center" >
               <span class="label" :class="GetAniClass('CH', 'fade')">下一站</span>
               <span class="label" :class="GetAniClass('EN', 'fade')" :style="GetMainStaNumStyle('EN')">Next</span>
+              <span class="label" :class="GetAniClass('JP', 'fade')" :style="GetMainStaNumStyle('JP')">つぎは</span>
+              <span class="label" :class="GetAniClass('KR', 'fade')" :style="GetMainStaNumStyle('KR')">다음은</span>
             </div>
             <div class="col text-left">
               <span class="num badge" style="min-width:4.5rem;"
@@ -84,16 +98,16 @@
         <div class="row name-area align-items-end">
           <template v-for="index in 7">
             <div class="col" :class="{'passed-sta':(index==1)}">
-              <div :class="'box'+index" class="box">
+              <div class="box" :class="'box'+index" >
                 <!-- 副站名CH -->
                 <div class="name CH" v-show="IsSubStaShow('CH')">
-                  <span class="text" :style="GetSubStaTextStyle('CN',index)">
+                  <span class="text" :style="GetSubStaTextStyle('CH',index)">
                     {{GetSubStaName('CH',index-2)}}
                   </span>
                 </div>
                 <!-- 副站名EN-->
                 <div class="name EN" v-show="IsSubStaShow('EN')" >
-                  <span class="text" v-html="GetSubStaName('EN',index-2)" :style="GetSubStaTextStyle('EN',index)"></span>
+                  <span class="text" :style="GetSubStaTextStyle('EN',index)" v-html="GetSubStaName('EN',index-2)"></span>
                 </div>
                 <div class="num">{{GetSubStaNum(index-2)}}</div>
               </div>
@@ -150,6 +164,19 @@
                   <div class="col">
                     <span class="text CH" v-if="IsSubStaShow('CH')">{{tran.TransferName}}線</span>
                     <span class="text EN" v-if="IsSubStaShow('EN')">{{tran.TransferName_EN}} Line</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trans" v-for="tran in GetSubStaTransferOther(index-2)">
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <span class="badge line-icon other" v-bind:style="'background:'+ tran.TransferColorCode" >
+                      <img class="img-fluid" :src="tran.Icon">
+                    </span>
+                  </div>
+                  <div class="col">
+                    <span class="text CH" v-if="IsSubStaShow('CH')">{{tran.Name}}</span>
+                    <span class="text EN" v-if="IsSubStaShow('EN')">{{tran.Name_EN}}</span>
                   </div>
                 </div>
               </div>

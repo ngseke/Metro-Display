@@ -4,19 +4,20 @@ var vm = new Vue({
 		lines:[],
 		stations: [],
 		transfers: [],
+		transfers_other: [],
 		timer: null,      // 為了解決$選擇器延遲bug的無用計數器
 		timerCounter: true,  //
 		color: 'BL',      // 當前路線顏色
 		terminal: 0,      // 終點站編號 index
 		direction: true,  // [行車方向] true:由小起點 false:由大起點
 		carNum: 5,        // 車號
-		curr: 10,     		  // 當前主車站 index
+		curr: 11,     		  // 當前主車站 index
+		langList:['CH','EN'],          // 語言列表
 		// ––––––––––––––––––––––––––––––––
 		mainStaLangPlayed: 0,
 		mainStaLang: 0,                // 當前主車站語言
 		mainStaLangTimer: null,        // 主車站語言計數器(自動切換語言)
 		mainStaLangTimerDelay: 3000,   // 當前主車站語言Delay毫秒
-		langList:['CH','EN'],          // 語言列表
 		// ––––––––––––––––––––––––––––––––
 		subStaLang: 0,     					 // 副車站語言
 		subStaLangTimer: null,       //
@@ -182,6 +183,15 @@ var vm = new Vue({
 				return [];
 			}
 		},
+		GetSubStaTransferOther:function(num){
+			var stations=this.stations;
+			var index=this.curr+num
+			if (index>=0&&index<stations.length) {
+				return stations[index].TransferOther;
+			}else {
+				return [];
+			}
+		},
 		GetTerminal:function(lang){
 			var sta=this.stations[this.terminal];
 			switch (lang) {
@@ -208,10 +218,16 @@ var vm = new Vue({
 				var style = {
 					transform: 'scaleX('+ percent +')',
 				}
-				return style;
 			}else{
-				return '';
+				var originalHeight = $('.sub-sta-area .box'+ index +'  .name.'+lang+' span.text').outerHeight();
+				var BoxHeight = $('.sub-sta-area .name-area').outerHeight() - $('.sub-sta-area .name-area .num').outerHeight();
+				var percent = Math.min((BoxHeight / originalHeight), 1);
+				var style = {
+					transform: 'scaleY('+ percent +')',
+				}
 			}
+			return style;
+
 		},
 		GetRouteArrowStyle:function(){ // 軌道箭頭Style
 			var h = $('.btm-area .route-area').outerHeight();
@@ -257,20 +273,37 @@ var vm = new Vue({
 				data: { Color: this.color },
 				success: function(data){
 					self.transfers = JSON.parse(data);
-					self.AddTransfer();
 				},
 				async: false
 			});
+			$.ajax({
+				url: 'get_transfer_other.php',
+				data: { Color: this.color },
+				success: function(data){
+					self.transfers_other = JSON.parse(data);
+				},
+				async: false
+			});
+			self.AddTransfer();
 		},
 		AddTransfer: function(){  // 結合車站與轉乘資料
 			var stations = this.stations;
 			stations.map((val) => {
 				return val.Transfer = new Array();
 			});
+			stations.map((val) => {
+				return val.TransferOther = new Array();
+			});
+
 			stations.forEach((val) => {
 				this.transfers.forEach((trans) => {
 					if(val.Color==trans.Color && val.Num==trans.Num){
 						val.Transfer.push(trans);
+					}
+				});
+				this.transfers_other.forEach((trans) => {
+					if(val.Color==trans.Color && val.Num==trans.Num){
+						val.TransferOther.push(trans);
 					}
 				});
 			});

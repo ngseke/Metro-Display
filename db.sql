@@ -118,7 +118,7 @@ VALUES('G', '02', '新店區公所', 'Xindian District <br>Office'),
       ('G', '13', '北門', 'Beimen'),
       ('G', '14', '中山', 'Zhongshan'),
       ('G', '15', '松江南京', 'Songjiang <br>Nanjing'),
-      ('G', '16', '南京復興', 'Nanjing Fuxing'),
+      ('G', '16', '南京復興', 'Nanjing <br>Fuxing'),
       ('G', '17', '台北小巨蛋', 'Taipei Arena'),
       ('G', '18', '南京三民', 'Nanjing Sanmin');
 
@@ -147,7 +147,7 @@ VALUES('O', '02', '景安', 'Jingan'),
       ('O', '16', '先嗇宮', 'Xianse Temple'),
       ('O', '17', '頭前庄', 'Touqianzhuang'),
       ('O', '18', '新莊', 'Xinzhuang'),
-      ('O', '19', '輔大', 'Fu Jen University'),
+      ('O', '19', '輔大', 'Fu Jen <br>University'),
       ('O', '20', '丹鳳', 'Danfeng'),
 
       ('O', '50', '三重國小', 'Sanchong <br>Elementary School'),
@@ -190,7 +190,6 @@ CREATE TABLE TRANSFER(
   TransferColor VARCHAR(7) NOT NULL,
   TransferNum int(2) NOT NULL,
   TransferInsideStation BOOLEAN DEFAULT TRUE,
-
   PRIMARY KEY(Color,Num,TransferColor,TransferNum)
 );
 
@@ -226,6 +225,33 @@ VALUES('BR', '09', 'R', '05'),
       ('BL', '14', 'O', '07'),
       ('BL', '15', 'BR', '10'),
       ('BL', '23', 'BR', '24');
+
+-- 其他轉乘 ;
+CREATE TABLE TRANSFER_OTHER(
+  Color VARCHAR(7) NOT NULL,
+  Num int(2) NOT NULL,
+  Name VARCHAR(10) NOT NULL,
+  Name_EN VARCHAR(20) NOT NULL,
+  Icon VARCHAR(100),
+  TransferColorCode VARCHAR(7)  DEFAULT '#1e1e1e',
+  TransferInsideStation BOOLEAN DEFAULT TRUE,
+  PRIMARY KEY(Color,Num,Name)
+);
+
+INSERT INTO TRANSFER_OTHER(Color,Num,Name,Name_EN,Icon)
+VALUES('BL',07,'台鐵','TRA','img/tra_logo-01.png'),
+      ('BL',07,'高鐵','HSR','img/hsr_logo-01.png'),
+      ('BL',12,'台鐵','TRA','img/tra_logo-01.png'),
+      ('BL',12,'高鐵','HSR','img/hsr_logo-01.png'),
+      ('BL',12,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+      ('BL',22,'台鐵','TRA','img/tra_logo-01.png'),
+      ('BL',22,'高鐵','HSR','img/hsr_logo-01.png'),
+      ('R',10,'台鐵','TRA','img/tra_logo-01.png'),
+      ('R',10,'高鐵','HSR','img/hsr_logo-01.png'),
+      ('R',10,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+      ('G',13,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+      ('G',19,'台鐵','TRA','img/tra_logo-01.png')
+;
 
 
 DROP VIEW IF EXISTS STATION_VIEW;

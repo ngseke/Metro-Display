@@ -97,6 +97,9 @@ body{
 
 .sub-sta-area .name-area{
   min-height: 18rem;
+  /* overflow: hidden; */
+  height: 18rem;  /* 重要 */
+
 }
 .sub-sta-area .box {
   text-align: center;
@@ -105,6 +108,7 @@ body{
   font-weight: 600;
   width: 5rem;
   font-size: 2.8rem;
+
 }
 .sub-sta-area .box .name.CH{
   writing-mode: vertical-rl;
@@ -112,6 +116,8 @@ body{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  overflow: visible;
+  white-space:nowrap;
 }
 
 .sub-sta-area .box .name.EN{
@@ -129,6 +135,12 @@ body{
 .sub-sta-area .box .name .text{
   display: inline-block;
   transform-origin: left center;
+  width: auto;
+}
+
+.sub-sta-area .box .name.CH .text{
+  display: inline-block;
+  transform-origin: center bottom;
   width: auto;
 }
 
@@ -178,6 +190,10 @@ body{
   font-size: 1rem;
   vertical-align: middle;
   font-weight: 500;
+}
+
+.line-icon.other{
+  padding: .15rem .15rem;
 }
 
 .trans .row{
