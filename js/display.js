@@ -17,11 +17,11 @@ var vm = new Vue({
 		mainStaLangPlayed: 0,
 		mainStaLang: 0,                // 當前主車站語言
 		mainStaLangTimer: null,        // 主車站語言計數器(自動切換語言)
-		mainStaLangTimerDelay: 1000,   // 當前主車站語言Delay毫秒
+		mainStaLangTimerDelay: 3000,   // 當前主車站語言Delay毫秒
 		// ––––––––––––––––––––––––––––––––
-		subStaLang: 3,     					 // 副車站語言
+		subStaLang: 0,     					 // 副車站語言
 		subStaLangTimer: null,       //
-		subStaLangTimerDelay: 100000,  //
+		subStaLangTimerDelay: 5000,  //
 	},
 	created:function(){
 		this.FetchLines();

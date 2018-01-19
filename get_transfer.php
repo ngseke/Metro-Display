@@ -3,7 +3,7 @@
 require_once('connection.php');
 
 $sql = "SELECT T.Color, T.Num, T.TransferColor, T.TransferNum,
-        L.Name TransferName, L.Name_EN TransferName_EN,
+        L.Name TransferName, L.Name_EN TransferName_EN, L.Name_JP TransferName_JP, L.Name_KR TransferName_KR,
         L.ColorCode TransferColorCode, L.TextColorCode TransferTextColorCode  FROM TRANSFER T ";
 $sql.= "LEFT JOIN LINE L ON T.TransferColor = L.Color ";
 $sql.= "WHERE (1) ";

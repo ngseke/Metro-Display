@@ -15,30 +15,34 @@
       <div class="row justify-content-between ">
         <!-- 終點站 區塊 -->
         <div class="col-4 col-lg-6 terminal-area" >
-          <div class="row ">
-            <div class="col-6 col-lg-3">
-              <div class="box" >
-                <div class="label" :class="GetAniClass('CH', 'fade')"><span>終 點</span></div>
-                <div class="label" :class="GetAniClass('EN', 'fade')"><span>To</span></div>
+          <div class="row">
+            <div class="col-12 ">
+              <div class="box ml-4" >
+                <div class="label CH" :class="GetAniClass('CH', 'fade')">
+                  <span class="mr-3">終 點</span>
+                  <span class="badge badge-dark name CH px-3" :style="GetLineColorStyle()">
+                    <span>{{GetTerminal('CH')}}</span>
+                  </span>
+                </div>
+                <div class="label EN" :class="GetAniClass('EN', 'fade')">
+                  <span class="mr-3">To</span>
+                  <span class="badge badge-dark name EN px-3" :style="GetLineColorStyle()">
+                    <span>{{GetTerminal('EN')}}</span>
+                  </span>
+                </div>
+                <div class="label JP" :class="GetAniClass('JP', 'fade')">
+                  <span class="badge badge-dark name JP px-3" :style="GetLineColorStyle()">
+                    <span>{{GetTerminal('JP')}}</span>
+                  </span>
+                  <span class="ml-3">ゆき</span>
+                </div>
+                <div class="label KR" :class="GetAniClass('KR', 'fade')">
+                  <span class="badge badge-dark name KR px-3" :style="GetLineColorStyle()">
+                    <span>{{GetTerminal('KR')}}</span>
+                  </span>
+                  <span class="ml-3">행</span>
+                </div>
               </div>
-            </div>
-            <div class="col-6 col-lg-6">
-              <div class="box" >
-                <span class="badge badge-dark name CH px-3" :style="GetLineColorStyle()" :class="GetAniClass('CH', 'fade')">
-                  <span>{{GetTerminal('CH')}}</span>
-                </span>
-                <span class="badge badge-dark name EN px-4" :style="GetLineColorStyle()" :class="GetAniClass('EN', 'fade')">
-                  <span>{{GetTerminal('EN')}}</span>
-                </span>
-                <span class="badge badge-dark name JP px-4" :style="GetLineColorStyle()" :class="GetAniClass('JP', 'fade')">
-                  <span>{{GetTerminal('JP')}}</span>
-                </span>
-                <span class="badge badge-dark name KR px-4" :style="GetLineColorStyle()" :class="GetAniClass('KR', 'fade')">
-                  <span>{{GetTerminal('KR')}}</span>
-                </span>
-              </div>
-            </div>
-            <div class="col-6 col-lg-3 text-left" >
             </div>
           </div>
         </div>
@@ -79,10 +83,10 @@
             <div class="col-8 text-center" >
               <div class="wrapper" style="height:4rem;">
                 <div class="box" >
-                  <div class="label" :class="GetAniClass('CH', 'fade')"><span>下一站</span></div>
-                  <div class="label" :class="GetAniClass('EN', 'fade')"><span>Next</span></div>
-                  <div class="label" :class="GetAniClass('JP', 'fade')"><span>つぎは</span></div>
-                  <div class="label" :class="GetAniClass('KR', 'fade')"><span>다음은</span></div>
+                  <div class="label CH" :class="GetAniClass('CH', 'fade')"><span>下一站</span></div>
+                  <div class="label EN" :class="GetAniClass('EN', 'fade')"><span>Next</span></div>
+                  <div class="label JP" :class="GetAniClass('JP', 'fade')"><span>つぎは</span></div>
+                  <div class="label KR" :class="GetAniClass('KR', 'fade')"><span>다음은</span></div>
                 </div>
               </div>
             </div>
@@ -171,7 +175,9 @@
                 <div class="py-0 position-relative" v-if="index==7" style="background:white; transform:translateX(100%)">
                   <div class="position-absolute" style=" height:100%;z-index:999; display:flex;align-items:center;justify-content:center;">
                     <span style="transform:translate(-1.5rem, .5rem)" v-if="IsSubStaShow('CH')">分</span>
-                    <span style="transform:translate(-1.5rem, .5rem)" v-if="IsSubStaShow('EN')">Min</span>
+                    <span style="transform:translate(-1.5rem, .5rem)" v-if="IsSubStaShow('EN')">Min.</span>
+                    <span style="transform:translate(-1.5rem, .5rem)" v-if="IsSubStaShow('JP')">分</span>
+                    <span style="transform:translate(-1.5rem, .5rem)" v-if="IsSubStaShow('KR')">분</span>
                   </div>
                   <div class="my-0 route-arrow" style="z-index:100; transform:translateX(0)" :style="GetRouteArrowStyle()"></div>
                 </div>
@@ -196,8 +202,8 @@
                   <div class="col">
                     <span class="text CH" v-if="IsSubStaShow('CH')">{{tran.TransferName}}線</span>
                     <span class="text EN" v-if="IsSubStaShow('EN')">{{tran.TransferName_EN}} Line</span>
-                    <span class="text JP" v-if="IsSubStaShow('JP')">{{tran.TransferName}}線</span>
-                    <span class="text KR" v-if="IsSubStaShow('KR')">{{tran.TransferName}}선</span>
+                    <span class="text JP" v-if="IsSubStaShow('JP')">{{tran.TransferName_JP}}線</span>
+                    <span class="text KR" v-if="IsSubStaShow('KR')">{{tran.TransferName_KR}}선</span>
                   </div>
                 </div>
               </div>
@@ -211,6 +217,8 @@
                   <div class="col">
                     <span class="text CH" v-if="IsSubStaShow('CH')">{{tran.Name}}</span>
                     <span class="text EN" v-if="IsSubStaShow('EN')">{{tran.Name_EN}}</span>
+                    <span class="text JP" v-if="IsSubStaShow('JP')">{{tran.Name_EN}}</span>
+                    <span class="text KR" v-if="IsSubStaShow('KR')">{{tran.Name_EN}}</span>
                   </div>
                 </div>
               </div>

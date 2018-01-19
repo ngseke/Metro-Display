@@ -1,14 +1,23 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 *{
   /* border: 1px solid rgba(0,0,255,.5); */
 }
 
 body{
-  /* font-family: 'Noto Sans TC', sans-serif; */
+  font-family: 'Noto Sans TC', sans-serif;
   color: #1e1e1e;
 }
+
+.JP{
+  font-family: 'Noto Sans Japanese', sans-serif;
+}
+.KR{
+  font-family: 'Noto Sans KR',  sans-serif;
+}
+
 
 /* ––––Top–––––––––––––––––––––*/
 
@@ -36,18 +45,14 @@ body{
   left: 0;
   top: 0;
   width: 100%;
-  text-align: center;
 }
 
 .terminal-area .box .name{
-  position: absolute;
-  left: 0;
-  top: 0;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-.terminal-area .CH.name span{
+.terminal-area .CH.name span, .terminal-area .JP.name span, .terminal-area .KR.name span{
   letter-spacing: .5rem;
   padding-left: .5rem;
 }
@@ -139,7 +144,7 @@ body{
 }
 .btm-area {
   /* height: 35rem; */
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .btm-area  *{
   /* border: 1px solid rgba(0,0,255,.5); */
@@ -147,7 +152,6 @@ body{
 
 .sub-sta-area .name-area{
   min-height: 18rem;
-  /* overflow: hidden; */
   height: 18rem;  /* 重要 */
 
 }
@@ -169,11 +173,6 @@ body{
   overflow: visible;
   white-space: nowrap;
   vertical-align: middle;
-}
-
-.sub-sta-area .box .name.KR{
-  /* letter-spacing: -.5rem; */
-  font-family: 'Noto Sans KR';
 }
 
 .sub-sta-area .box .name.EN{

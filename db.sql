@@ -16,13 +16,13 @@ CREATE TABLE LINE(
 
 -- 插入路線 ;
 INSERT INTO LINE(Color, Name, Name_EN, Name_JP, Name_KR, ColorCode)
-VALUES('BR', '文湖', 'Wenhu', '#a1662c'),
-      ('R', '淡水信義', 'Tamsui-Xinyi', '#d12a2f'),
-      ('G', '松山新店', 'Songshan-Xindian', '#007549'),
-      ('O', '中和新蘆', 'Zhonghe-Xinlu', '#ffa400'),
-      ('BL', '板南', 'Bannan', '#005cb9'),
-      ('RBranch', '新北投支', 'Xinbeitou Branch', '#fd92a3'),
-      ('GBranch', '小碧潭支', 'Xiaobitan Branch', '#cfdb00');
+VALUES('BR', '文湖', 'Wenhu','文湖','원후', '#a1662c'),
+      ('R', '淡水信義', 'Tamsui-Xinyi', '淡水信義','단수이-신이', '#d12a2f'),
+      ('G', '松山新店', 'Songshan-Xindian', '松山新店','쑹산-신뎬', '#007549'),
+      ('O', '中和新蘆', 'Zhonghe-Xinlu', '中和新蘆','중허-신루', '#ffa400'),
+      ('BL', '板南', 'Bannan', '板南','반난', '#005cb9'),
+      ('RBranch', '新北投支', 'Xinbeitou Branch', 'Wenhu','Wenhu', '#fd92a3'),
+      ('GBranch', '小碧潭支', 'Xiaobitan Branch', 'Wenhu','Wenhu', '#cfdb00');
 
 -- 針對O線設定文字顏色為黑 ;
 UPDATE LINE SET TextColorCode='#1e1e1e' WHERE Color = 'O';
