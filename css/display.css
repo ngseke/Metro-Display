@@ -1,15 +1,21 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 *{
   /* border: 1px solid rgba(0,0,255,.5); */
 }
 
 body{
+  /* font-family: 'Noto Sans TC', sans-serif; */
   color: #1e1e1e;
 }
 
 /* ––––Top–––––––––––––––––––––*/
+
 #display{
   overflow: hidden;
 }
+
 .top-area{
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
@@ -21,12 +27,22 @@ body{
   font-weight: 700;
 }
 
-.terminal-area .label{
-  vertical-align: middle;
-  display: block;
+.terminal-area .box{
+  position: relative;
 }
 
-.terminal-area .name{
+.terminal-area .box .label{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.terminal-area .box .name{
+  position: absolute;
+  left: 0;
+  top: 0;
   font-size: 1.8rem;
   font-weight: 700;
 }
@@ -38,7 +54,7 @@ body{
 
 /* 車號 */
 .car-num-area{
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
 }
 
@@ -47,11 +63,39 @@ body{
   vertical-align:middle;
 }
 
+.car-num-area .box{
+  position: relative;
+}
+
+.car-num-area .label{
+  position: absolute;
+  left: 0;
+  letter-spacing:.3rem;
+  margin: .3rem;
+}
+
+.car-num-area .label.EN{
+  position: absolute;
+  right: 0;
+  letter-spacing:0rem;
+}
+
+.car-num-area .label span{
+  display: inline-block;
+}
+
+/* 車站編號文字Box */
+.main-sta-num-area .box{
+  position: relative;
+}
+
 /* 車站編號文字（下一站） */
 .main-sta-num-area .label{
+  position: absolute;
   font-size: 2.4rem;
   font-weight: 700;
-  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 /* 車站編號數字（BL01） */
@@ -64,20 +108,22 @@ body{
 
 /* 主要車站文字外框 */
 .main-sta-area .box{
-  text-align: center;
-  overflow: hidden;
-
+  position: relative;
+  height: 12rem;
 }
 
 /* 主要車站文字 */
 .main-sta-area .box .name{
+  position: absolute;
+  left: 0;
+  top: 0;
   font-size: 7.4rem;
   font-weight: 600;
-  color: #1e1e1e;
+  display: inline-block;
+  white-space:nowrap;
+  width: 100%;
   display: block;
   text-align: center;
-  white-space:nowrap;
-  transition: all 1s;
 }
 
 .main-sta-area .box .name .text{
@@ -114,23 +160,30 @@ body{
   font-size: 2.8rem;
 
 }
-.sub-sta-area .box .name.CH{
+.sub-sta-area .box .name{
   writing-mode: vertical-rl;
   display: block;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   overflow: visible;
-  white-space:nowrap;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.sub-sta-area .box .name.KR{
+  /* letter-spacing: -.5rem; */
+  font-family: 'Noto Sans KR';
 }
 
 .sub-sta-area .box .name.EN{
+  writing-mode: horizontal-tb;
   font-weight: 500;
   display: block;
   overflow: visible;
   width: 22rem;
   text-align: left;
-  line-height:2.8rem;
+  line-height: 3rem;
   transform-origin: left bottom;
   transform: translateX(3rem) rotate(-60deg);
   white-space:nowrap;
@@ -138,13 +191,13 @@ body{
 
 .sub-sta-area .box .name .text{
   display: inline-block;
-  transform-origin: left center;
+  transform-origin: center bottom;
   width: auto;
 }
 
-.sub-sta-area .box .name.CH .text{
+.sub-sta-area .box .name.EN .text{
   display: inline-block;
-  transform-origin: center bottom;
+  transform-origin: left center;
   width: auto;
 }
 

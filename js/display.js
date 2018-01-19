@@ -7,21 +7,21 @@ var vm = new Vue({
 		transfers_other: [],
 		timer: null,      // 為了解決$選擇器延遲bug的無用計數器
 		timerCounter: true,  //
-		color: 'R',      // 當前路線顏色
+		color: 'BL',      // 當前路線顏色
 		terminal: 0,      // 終點站編號 index
 		direction: true,  // [行車方向] true:由小起點 false:由大起點
 		carNum: 1,        // 車號
 		curr: 0,     		  // 當前主車站 index
-		langList:['CH','EN'],          // 語言列表
+		langList:['CH','EN','JP','KR'],          // 語言列表
 		// ––––––––––––––––––––––––––––––––
 		mainStaLangPlayed: 0,
 		mainStaLang: 0,                // 當前主車站語言
 		mainStaLangTimer: null,        // 主車站語言計數器(自動切換語言)
 		mainStaLangTimerDelay: 1000,   // 當前主車站語言Delay毫秒
 		// ––––––––––––––––––––––––––––––––
-		subStaLang: 0,     					 // 副車站語言
+		subStaLang: 3,     					 // 副車站語言
 		subStaLangTimer: null,       //
-		subStaLangTimerDelay: 6000,  //
+		subStaLangTimerDelay: 100000,  //
 	},
 	created:function(){
 		this.FetchLines();
@@ -113,24 +113,6 @@ var vm = new Vue({
 			}
 			return classObj;
 		},
-		GetTerminalLabelStyle:function(lang='CH'){ // 取得終點Label margin-top負值
-			if(!(lang=='CH')){
-				var boxHeight = $('.terminal-area .label').outerHeight();
-				var style = {
-					marginTop: -boxHeight +'px',
-				}
-				return style;
-			}
-		},
-		GetTerminalBoxStyle:function(lang='CH'){ // 取得終點Box margin-top負值
-			if(!(lang=='CH')){
-				var boxHeight = $('.terminal-area .box .name').outerHeight();
-				var style = {
-					marginTop: -boxHeight +'px',
-				}
-				return style;
-			}
-		},
 		GetMainStaNumStyle:function(lang='CH'){ // 取得主車站編號Label margin-top負值
 			if(!(lang=='CH')){
 				var boxHeight = $('.main-sta-num-area .label').outerHeight();
@@ -141,7 +123,8 @@ var vm = new Vue({
 			}
 		},
 		GetMainStaStyle:function(lang='CH'){ // 取得主站名margin-top負值
-			if(!(lang=='CH')){
+			return '';
+			if(lang!='CH'){
 				var boxHeight = $('.main-sta-area .box .name').outerHeight();
 				var style = {
 					marginTop: -boxHeight +'px',
@@ -154,6 +137,8 @@ var vm = new Vue({
 			switch (lang) {
 				case 'CH': return sta.Name;
 				case 'EN': return this.StripHTML(sta.Name_EN); // 移除html標籤
+				case 'JP': return this.StripHTML(sta.Name_JP);
+				case 'KR': return this.StripHTML(sta.Name_KR);
 				default  : return '';
 			}
 		},
@@ -174,11 +159,10 @@ var vm = new Vue({
 			var index=this.curr + num
 			if (index>=0&&index<stations.length) {
 				switch (lang) {
-					case 'CH':
-					return(stations[index].Name.length==2) // 若只有兩字元在中間插入全形空格
-						? stations[index].Name[0]+'　'+stations[index].Name[1]
-						: stations[index].Name;
+					case 'CH': return this.AddSpace(stations[index].Name);
 					case 'EN': return stations[index].Name_EN;
+					case 'JP': return this.AddSpace(stations[index].Name_JP);
+					case 'KR': return this.AddSpace(stations[index].Name_KR);
 					default  : return '';
 				}
 			}else {
@@ -217,7 +201,9 @@ var vm = new Vue({
 			switch (lang) {
 				case 'CH': return sta.Name;
 				case 'EN': return this.StripHTML(sta.Name_EN);
-				default  : return '';
+				case 'JP': return this.StripHTML(sta.Name_JP);
+				case 'KR': return this.StripHTML(sta.Name_KR);
+				default : return '';
 			}
 		},
 		GetMainStaTextStyle:function(lang='EN'){ // 取得主車站的style (通常是scaleX, 根據div實際寬度)
@@ -327,7 +313,7 @@ var vm = new Vue({
 				});
 			});
 		},
-		GetLineColorStyle: function(bg,text){  // 取得路線顏色
+		GetLineColorStyle: function(bg = this.stations[this.curr].ColorCode, text = this.stations[this.curr].TextColorCode){  // 取得路線顏色
 			var style = {
 				backgroundColor: bg,
 				color: text
@@ -341,6 +327,9 @@ var vm = new Vue({
 		  }
 		  return output;
 		},
+		AddSpace: function(text){ // 若只有兩字元在中間插入全形空格
+			return(text.length==2) ? text[0] + '　' + text[1] : text;
+		}
 	},
 	computed:{
 

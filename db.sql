@@ -8,12 +8,14 @@ CREATE TABLE LINE(
   Color VARCHAR(7) NOT NULL PRIMARY KEY,
   Name VARCHAR(20),
   Name_EN VARCHAR(20),
+  Name_JP VARCHAR(20),
+  Name_KR VARCHAR(20),
   ColorCode VARCHAR(7),
   TextColorCode VARCHAR(7) DEFAULT '#ffffff'
 );
 
 -- 插入路線 ;
-INSERT INTO LINE(Color, Name, Name_EN, ColorCode)
+INSERT INTO LINE(Color, Name, Name_EN, Name_JP, Name_KR, ColorCode)
 VALUES('BR', '文湖', 'Wenhu', '#a1662c'),
       ('R', '淡水信義', 'Tamsui-Xinyi', '#d12a2f'),
       ('G', '松山新店', 'Songshan-Xindian', '#007549'),
@@ -32,9 +34,9 @@ CREATE TABLE STATION(
   Num int(2) NOT NULL,
   Name VARCHAR(20) NOT NULL,
   Name_EN VARCHAR(50) NOT NULL,
-  Name_JP VARCHAR(20) DEFAULT '',
-  Name_KR VARCHAR(20) DEFAULT '',
-  Name_TG VARCHAR(20) DEFAULT '',
+  Name_JP VARCHAR(20) DEFAULT '　',
+  Name_KR VARCHAR(20) DEFAULT '　',
+  Name_TG VARCHAR(20) DEFAULT '　',
   Terminal BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (Color, Num)
 );
@@ -157,31 +159,31 @@ VALUES('O', '02', '景安', 'Jingan'),
 
 
 -- 插入 BL;
-INSERT INTO STATION(Color, Num, Name, Name_EN, Terminal)
-VALUES('BL', '01', '頂埔', 'Dingpu', TRUE),
-      ('BL', '23', '南港展覽館', 'Taipei Nangang <br>Exhibition Center', TRUE);
-INSERT INTO STATION(Color, Num, Name, Name_EN)
-VALUES('BL', '02', '永寧', 'Yongning'),
-      ('BL', '03', '土城', 'Tucheng'),
-      ('BL', '04', '海山', 'Haishan'),
-      ('BL', '05', '亞東醫院', 'Far Eastern <br>Hospital'),
-      ('BL', '06', '府中', 'Fuzhong'),
-      ('BL', '07', '板橋', 'Banqiao'),
-      ('BL', '08', '新埔', 'Xinpu'),
-      ('BL', '09', '江子翠', 'Jiangzicui'),
-      ('BL', '10', '龍山寺', 'Longshan Temple'),
-      ('BL', '11', '西門', 'Ximen'),
-      ('BL', '12', '台北車站', 'Taipei Main <br>Station'),
-      ('BL', '13', '善導寺', 'Shandao Temple'),
-      ('BL', '14', '忠孝新生', 'Zhongxiao <br>Xinsheng'),
-      ('BL', '15', '忠孝復興', 'Zhongxiao <br>Fuxing'),
-      ('BL', '16', '忠孝敦化', 'Zhongxiao <br>Dunhua'),
-      ('BL', '17', '國父紀念館', 'Sun Yat-Sen <br>Memorial Hall'),
-      ('BL', '18', '市政府', 'Taipei City Hall'),
-      ('BL', '19', '永春', 'Yongchun'),
-      ('BL', '20', '後山埤', 'Houshanpi'),
-      ('BL', '21', '昆陽', 'Kunyang'),
-      ('BL', '22', '南港', 'Nangang');
+INSERT INTO STATION(Color, Num, Name, Name_EN, Name_JP, Name_KR, Terminal)
+VALUES('BL', '01', '頂埔', 'Dingpu', '頂埔', '딩푸', TRUE),
+      ('BL', '23', '南港展覽館', 'Taipei Nangang <br>Exhibition Center', '南港展覽館', '난강 전람관', TRUE);
+INSERT INTO STATION(Color, Num, Name, Name_EN, Name_JP, Name_KR)
+VALUES('BL', '02', '永寧', 'Yongning' ,'永寧','융닝'),
+      ('BL', '03', '土城', 'Tucheng','土城','투청'),
+      ('BL', '04', '海山', 'Haishan','海山','투청'),
+      ('BL', '05', '亞東醫院', 'Far Eastern <br>Hospital','亜東病院','야둥 병원'),
+      ('BL', '06', '府中', 'Fuzhong','府中','푸중'),
+      ('BL', '07', '板橋', 'Banqiao','板橋','반차오'),
+      ('BL', '08', '新埔', 'Xinpu','新埔','신푸'),
+      ('BL', '09', '江子翠', 'Jiangzicui','江子翠','장쯔추이'),
+      ('BL', '10', '龍山寺', 'Longshan Temple','龍山寺','룽산스'),
+      ('BL', '11', '西門', 'Ximen','西門','시먼'),
+      ('BL', '12', '台北車站', 'Taipei Main <br>Station','台北駅','타이베이 역'),
+      ('BL', '13', '善導寺', 'Shandao Temple','善導寺','산다오스'),
+      ('BL', '14', '忠孝新生', 'Zhongxiao <br>Xinsheng','忠孝新生','중샤오 신성'),
+      ('BL', '15', '忠孝復興', 'Zhongxiao <br>Fuxing','忠孝復興','중샤오 푸싱'),
+      ('BL', '16', '忠孝敦化', 'Zhongxiao <br>Dunhua','忠孝敦化','중샤오 둔화'),
+      ('BL', '17', '國父紀念館', 'Sun Yat-Sen <br>Memorial Hall','国父紀念館','국부 기념관'),
+      ('BL', '18', '市政府', 'Taipei City Hall','市政府','타이베이 시청'),
+      ('BL', '19', '永春', 'Yongchun','永春','융춘'),
+      ('BL', '20', '後山埤', 'Houshanpi','後山埤','허우산피'),
+      ('BL', '21', '昆陽', 'Kunyang','昆陽','쿤양'),
+      ('BL', '22', '南港', 'Nangang','南港','난강');
 
 -- 轉乘 ;
 CREATE TABLE TRANSFER(
@@ -256,12 +258,14 @@ VALUES('BL',07,'台鐵','TRA','img/tra_logo-01.png'),
 
 DROP VIEW IF EXISTS STATION_VIEW;
 CREATE VIEW STATION_VIEW AS
-SELECT S.Color, S.Num, S.Name, S.Name_EN , L.ColorCode, L.TextColorCode
+SELECT S.Color, S.Num, S.Name, S.Name_EN,S.Name_JP, S.Name_KR, L.ColorCode, L.TextColorCode
 FROM STATION AS S
-JOIN LINE L ON S.Color = L.Color
+JOIN LINE L ON S.Color = L.Color;
 
-;
+
 
 -- SubName VARCHAR(20),
 -- SubName_EN VARCHAR(20),
--- 副站名, 其他國語言站名, 轉乘, 行政區 以其他表
+-- 副站名, 其他國語言站名, 轉乘, 行政區 以其他表 ;
+
+SELECT * FROM STATION
