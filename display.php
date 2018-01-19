@@ -14,13 +14,13 @@
     <div class="container-fluid top-area pt-4" >
       <div class="row justify-content-between align-items-center">
         <!-- 終點站 區塊 -->
-        <div class="col-4 col-lg-6 terminal-area">
+        <div class="col-4 col-lg-6 terminal-area" >
           <div  class="row no-gutters">
             <div class="col-6 col-lg-3 text-center">
               <span class="label" :class="GetAniClass('CH', 'fade')">終  點</span>
               <span class="label" :class="GetAniClass('EN', 'fade')" :style="GetTerminalLabelStyle('EN')">To</span>
             </div>
-            <div class="col-6 col-lg-auto">
+            <div class="col-6 col-lg-6">
               <div class="box" :class="GetAniClass('CH', 'fade')" >
                 <span class="badge badge-dark name CH px-3"
                 :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)"><span>{{GetTerminal('CH')}}</span></span>
@@ -38,7 +38,7 @@
                 :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)"><span>{{GetTerminal('KR')}}딩푸</span></span>
               </div>
             </div>
-            <div class="col-6 col-lg-3 text-left">
+            <div class="col-6 col-lg-3 text-left" hidden>
               <span class="label" :class="GetAniClass('JP', 'fade')">ゆき</span>
               <span class="label" :class="GetAniClass('KR', 'fade')" :style="GetTerminalLabelStyle('KR')">행</span>
             </div>
@@ -62,7 +62,7 @@
               <span class="label" :class="GetAniClass('KR', 'fade')" :style="GetMainStaNumStyle('KR')">다음은</span>
             </div>
             <div class="col text-left">
-              <span class="num badge" style="min-width:4.5rem;"
+              <span class="num badge"
               :style="GetLineColorStyle(stations[curr].ColorCode, stations[curr].TextColorCode)">
               {{stations[curr].Color}}<br>{{GetNum(stations[curr].Num)}}</span>
             </div>
@@ -139,7 +139,8 @@
                 <!-- 藍塊 -->
                 <div class="py-0 position-relative" v-if="index==7" style="background:white; transform:translateX(100%)">
                   <div class="position-absolute" style=" height:100%;z-index:999; display:flex;align-items:center;justify-content:center;">
-                    <span style="transform:translateX(-1.5rem)">(分)</span>
+                    <span style="transform:translate(-1.5rem, .5rem)" v-if="IsSubStaShow('CH')">分</span>
+                    <span style="transform:translate(-1.5rem, .5rem)" v-if="IsSubStaShow('EN')">Min</span>
                   </div>
                   <div class="my-0 route-arrow" style="z-index:100; transform:translateX(0)" :style="GetRouteArrowStyle()"></div>
                 </div>
@@ -189,6 +190,9 @@
     </div>
     <!-- 控制器 -->
     <div class="container my-3">
+      <div class="text-warning">
+        {{mainStaLangPlayed}}
+      </div>
       <span hidden>{{timerCounter}}</span>
       <div class="card">
         <div class="card-body">
