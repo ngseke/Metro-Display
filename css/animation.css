@@ -32,6 +32,29 @@
   100% {opacity: 0;}
 }
 
+@keyframes translate-enter{
+  0% {
+    transform-origin: left;
+    transform: translateX(-1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes translate-leave{
+  0% {
+    transform-origin: left;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1rem);
+    opacity: 0;
+  }
+}
+
 .flip-enter{
   animation: flip-enter .8s;
   animation-fill-mode: forwards;
@@ -49,5 +72,15 @@
 
 .fade-out{
   animation: fade-out .8s;
+  animation-fill-mode: forwards;
+}
+
+.translate-enter{
+  animation: translate-enter .8s;
+  /* animation-fill-mode: forwards; */
+}
+
+.translate-leave{
+  animation: translate-leave .8s;
   animation-fill-mode: forwards;
 }

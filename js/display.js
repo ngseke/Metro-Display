@@ -24,7 +24,7 @@ var vm = new Vue({
 		subStaLangTimer: null,       //
 		subStaLangTimerDelay: 3000,  //
 		// ––––––––––––––––––––––––––––––––
-		isRemoteShow: true,
+		isRemoteShow: true,					// 是否顯示遙控器
 	},
 	created:function(){
 		this.FetchLines();
@@ -41,13 +41,13 @@ var vm = new Vue({
 		}, this.subStaLangTimerDelay);
 		this.timer = setInterval(() => {
 			this.timerCounter=!this.timerCounter;
-		}, 10);
+		}, 50);
 	},
 	methods:{
 		ResetSta:function() {
 			this.FetchStations();
 			this.FetchTransfers();
-			this.curr=0;
+			this.curr = 0;
 		},
 		ResetTimer: function() {   // 重設主車站Timer
 			clearInterval(this.mainStaLangTimer);
@@ -60,29 +60,29 @@ var vm = new Vue({
 				this.ToggleSubStaLang();
 			}, this.subStaLangTimerDelay);
 
-			this.mainStaLang=this.subStaLang=0;
-			this.mainStaLangPlayed=this.subStaLangPlayed=false;
+			this.mainStaLang = this.subStaLang = 0;
+			this.mainStaLangPlayed = this.subStaLangPlayed = false;
 		},
 		ToggleMainStaLang: function(d=1){ // 切換主車站語言狀態
-			var state=this.mainStaLang;
-			var length=this.langList.length;
-			if (this.mainStaLang == 0) this.mainStaLangPlayed=true;
+			var state = this.mainStaLang;
+			var length = this.langList.length;
+			if (this.mainStaLang == 0) this.mainStaLangPlayed = true;
 			this.mainStaLang = (state+length+d) % length;
 		},
 		ToggleSubStaLang: function(d=1){ // 切換副車站語言狀態
-			var state=this.subStaLang;
-			var length=this.langList.length;
-			if (this.subStaLang == 0) this.subStaLangPlayed=true;
+			var state = this.subStaLang;
+			var length = this.langList.length;
+			if (this.subStaLang == 0) this.subStaLangPlayed = true;
 			this.subStaLang =(state+length+d) % length;
 		},
 		ToggleDirection: function(direction=null){ // 切換行駛方向
-			this.direction = (direction==null) ? (!this.direction) : direction ;
+			this.direction = (direction == null) ? (!this.direction) : direction ;
 			this.FetchStations();
 			this.FetchTransfers();
 		},
 		Toggle: function(d=1){ // 切換車站
-			var state=this.curr;
-			var length=this.stations.length;
+			var state = this.curr;
+			var length = this.stations.length;
 			this.curr = (state+length+d) % length;
 			this.ResetTimer();
 		},
@@ -90,16 +90,16 @@ var vm = new Vue({
 			var langList = this.langList;					// 語言列表
 			var played = this.mainStaLangPlayed;	// 播放過的Counter
 			var curr = this.mainStaLang;					// 當前語言Index
-			var classObj={'text-warning':true};
+			var classObj = {'text-warning':true};
 
 			switch (type) {
 				case 'flip':
 					if(!played){ // 若未播放過
-						classObj = (langList[0]==lang) ? {'' : true} : {'d-none' : true};
+						classObj = (langList[0] == lang) ? {'' : true} : {'d-none' : true};
 					}else{	// 若播放過
 						if(langList[curr]==lang){
 							classObj = {'flip-enter' : true};
-						}else if(langList[(curr-1+langList.length)%langList.length]==lang){
+						}else if(langList[(curr-1+langList.length)%langList.length] == lang){
 							classObj = {'flip-leave' : true};
 						}else{
 							classObj = {'d-none' : true};
@@ -108,11 +108,11 @@ var vm = new Vue({
 					break;
 				case 'fade':
 					if(played==0){ // 若未播放過
-						classObj = (langList[0]==lang) ? {'' : true} : {'d-none' : true};
+						classObj = (langList[0] == lang) ? {'' : true} : {'d-none' : true};
 					}else{	// 若播放過
 						if(langList[curr]==lang){
 							classObj = {'fade-in' : true};
-						}else if(langList[(curr-1+langList.length)%langList.length]==lang){
+						}else if(langList[(curr-1+langList.length) % langList.length] == lang){
 							classObj = {'fade-out' : true};
 						}else{
 							classObj = {'d-none' : true};
@@ -123,38 +123,29 @@ var vm = new Vue({
 			}
 			return classObj;
 		},
-		GetMainStaNumStyle:function(lang='CH'){ // 取得主車站編號Label margin-top負值
-			if(!(lang=='CH')){
-				var boxHeight = $('.main-sta-num-area .label').outerHeight();
-				var style = {
-					marginTop: -boxHeight +'px',
-				}
-				return style;
-			}
-		},
 		GetCurr:function(lang='CH'){  // 取得當前站名
 			var sta = this.stations[this.curr];
 			switch (lang) {
-				case 'CH': return sta.Name;
+				case 'CH': return this.AddSpace(sta.Name);
 				case 'EN': return this.StripHTML(sta.Name_EN); // 移除html標籤
-				case 'JP': return this.StripHTML(sta.Name_JP);
-				case 'KR': return this.StripHTML(sta.Name_KR);
+				case 'JP': return this.AddSpace(sta.Name_JP);
+				case 'KR': return this.AddSpace(sta.Name_KR);
 				default  : return '';
 			}
 		},
 		GetMainStaTransfer:function(){
-			var stations=this.stations;
-			var index=this.curr
-			if (index>=0&&index<stations.length) {
+			var stations = this.stations;
+			var index = this.curr
+			if (index >= 0 && index < stations.length) {
 				return stations[index].Transfer;
 			}else {
 				return [];
 			}
 		},
 		GetMainStaTransferOther:function(){
-			var stations=this.stations;
-			var index=this.curr
-			if (index>=0&&index<stations.length) {
+			var stations = this.stations;
+			var index = this.curr
+			if (index >= 0 && index < stations.length) {
 				return stations[index].TransferOther;
 			}else {
 				return [];
@@ -173,9 +164,9 @@ var vm = new Vue({
 			return (lang == this.langList[this.subStaLang]);
 		},
 		GetSubStaName:function(lang='CH', num){
-			var stations=this.stations;
-			var index=this.curr + num
-			if (index>=0&&index<stations.length) {
+			var stations = this.stations;
+			var index = this.curr + num
+			if (index >= 0 && index < stations.length) {
 				switch (lang) {
 					case 'CH': return this.AddSpace(stations[index].Name);
 					case 'EN': return stations[index].Name_EN;
@@ -188,34 +179,34 @@ var vm = new Vue({
 			}
 		},
 		GetSubStaNum:function(num){
-			var stations=this.stations;
-			var index=this.curr + num
-			if (index>=0&&index<stations.length) {
+			var stations = this.stations;
+			var index = this.curr + num
+			if (index >= 0 && index < stations.length) {
 				return (this.color+this.GetNum(stations[index].Num));
 			}else {
 				return '';
 			}
 		},
 		GetSubStaTransfer:function(num){
-			var stations=this.stations;
-			var index=this.curr+num
-			if (index>=0&&index<stations.length) {
+			var stations = this.stations;
+			var index = this.curr+num
+			if (index >= 0 && index < stations.length) {
 				return stations[index].Transfer;
 			}else {
 				return [];
 			}
 		},
 		GetSubStaTransferOther:function(num){
-			var stations=this.stations;
-			var index=this.curr+num
-			if (index>=0&&index<stations.length) {
+			var stations = this.stations;
+			var index = this.curr+num
+			if (index >= 0 && index < stations.length) {
 				return stations[index].TransferOther;
 			}else {
 				return [];
 			}
 		},
 		GetTerminal:function(lang){
-			var sta=this.stations[this.terminal];
+			var sta = this.stations[this.terminal];
 			switch (lang) {
 				case 'CH': return sta.Name;
 				case 'EN': return this.StripHTML(sta.Name_EN);
@@ -234,16 +225,16 @@ var vm = new Vue({
 			return style;
 		},
 		GetSubStaTextStyle:function(lang='EN',index=0){ // 取得副車站的style
-			if(lang=='EN'){
-				var originalWidth = $('.sub-sta-area .box'+ index +'  .name.'+lang+' span.text').innerWidth()+80;
+			if(lang == 'EN'){
+				var originalWidth = $('.sub-sta-area .box' + index + ' .name.'+lang+' span.text').innerWidth()+80;
 				var realHeight = originalWidth * Math.sin(60/180*Math.PI);
-				var BoxHeight = $('.sub-sta-area .name-area').outerHeight()-$('.sub-sta-area .name-area .num').outerHeight();
+				var BoxHeight = $('.sub-sta-area .name-area').outerHeight() - $('.sub-sta-area .name-area .num').outerHeight();
 				var percent = Math.min((BoxHeight / realHeight), 1);
 				var style = {
-					transform: 'scaleX('+ percent +')',
+					transform: 'scaleX(' + percent + ')',
 				}
 			}else{
-				var originalHeight = $('.sub-sta-area .box'+ index +'  .name.'+lang+' span.text').outerHeight();
+				var originalHeight = $('.sub-sta-area .box' + index + ' .name.'+lang+' span.text').outerHeight();
 				var BoxHeight = $('.sub-sta-area .name-area').outerHeight() - $('.sub-sta-area .name-area .num').outerHeight();
 				BoxHeight=250;
 				var percent = Math.min((BoxHeight / originalHeight), 1);
@@ -256,7 +247,6 @@ var vm = new Vue({
 		GetRouteArrowStyle:function(){ // 軌道箭頭Style
 			var h = $('.btm-area .route-area').outerHeight();
 			var color = this.stations[this.curr].ColorCode;
-		  // color = 'red';
 			var style = {
 				height:  h + 'px',
 				border: 'transparent ' + h/2 + 'px solid',
@@ -265,7 +255,7 @@ var vm = new Vue({
 			return style;
 		},
 		GetNum:function(num=0){ // 取得車站編號（個位數補0）
-			return (num<10)? '0'+num.toString() : num.toString();
+			return (num<10) ? '0' + num.toString() : num.toString();
 		},
 		FetchLines: function(){    // 取得Lines
 			var self = this;

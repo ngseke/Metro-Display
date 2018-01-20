@@ -50,6 +50,10 @@ body{
 .terminal-area .box .name{
   font-size: 1.8rem;
   font-weight: 700;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .terminal-area .CH.name span, .terminal-area .JP.name span, .terminal-area .KR.name span{

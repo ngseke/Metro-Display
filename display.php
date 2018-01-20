@@ -17,30 +17,30 @@
         <div class="col-4 col-lg-6 terminal-area" >
           <div class="row">
             <div class="col-12 ">
-              <div class="box ml-4" >
+              <div class="box ml-4">
                 <div class="label CH" :class="GetAniClass('CH', 'fade')">
-                  <span class="mr-3">終 點</span>
-                  <span class="badge badge-dark name CH px-3" :style="GetLineColorStyle()">
+                  <span>終 點</span>
+                  <span class="badge badge-dark name CH" :style="GetLineColorStyle()">
                     <span>{{GetTerminal('CH')}}</span>
                   </span>
                 </div>
                 <div class="label EN" :class="GetAniClass('EN', 'fade')">
-                  <span class="mr-3">To</span>
-                  <span class="badge badge-dark name EN px-3" :style="GetLineColorStyle()">
+                  <span>To</span>
+                  <span class="badge badge-dark name EN" :style="GetLineColorStyle()">
                     <span>{{GetTerminal('EN')}}</span>
                   </span>
                 </div>
                 <div class="label JP" :class="GetAniClass('JP', 'fade')">
-                  <span class="badge badge-dark name JP px-3" :style="GetLineColorStyle()">
+                  <span class="badge badge-dark name JP" :style="GetLineColorStyle()">
                     <span>{{GetTerminal('JP')}}</span>
                   </span>
-                  <span class="ml-3">ゆき</span>
+                  <span>ゆき</span>
                 </div>
                 <div class="label KR" :class="GetAniClass('KR', 'fade')">
-                  <span class="badge badge-dark name KR px-3" :style="GetLineColorStyle()">
+                  <span class="badge badge-dark name KR" :style="GetLineColorStyle()">
                     <span>{{GetTerminal('KR')}}</span>
                   </span>
-                  <span class="ml-3">행</span>
+                  <span>행</span>
                 </div>
               </div>
             </div>
@@ -121,13 +121,16 @@
     <div class="divide-line" :style="GetLineColorStyle()"></div>
 
     <!-- 廣播 -->
-    <div class="btm-area" style="min-height:20rem">
+    <div class="btm-area" >
       <div class="container broadcast">
-        <div class="row justify-content-center " >
+        <div class="alert alert-info mt-3">
+          <h1 class="text-center">轉乘資訊 / Transfer</h1>
+        </div>
+        <div class="row justify-content-center align-items-center" style="min-height:24rem;">
           <template v-for="t in GetMainStaTransfer()">
             <div class="col-auto my-3">
               <div class="row align-items-center">
-                <div class="col-auto ">
+                <div class="col-auto">
                   <span class="badge line-icon lg" v-bind:style="GetLineColorStyle(t.TransferColorCode,t.TransferTextColorCode)" >
                     {{t.TransferColor}}
                   </span>
