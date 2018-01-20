@@ -11,17 +11,20 @@ var vm = new Vue({
 		terminal: 0,      // 終點站編號 index
 		direction: true,  // [行車方向] true:由小起點 false:由大起點
 		carNum: 1,        // 車號
-		curr: 0,     		  // 當前主車站 index
+		curr: 11,     	 // 當前主車站 index
 		langList:['CH','EN','JP','KR'],          // 語言列表
 		// ––––––––––––––––––––––––––––––––
-		mainStaLangPlayed: 0,
+		mainStaLangPlayed: false,
 		mainStaLang: 0,                // 當前主車站語言
 		mainStaLangTimer: null,        // 主車站語言計數器(自動切換語言)
-		mainStaLangTimerDelay: 3000,   // 當前主車站語言Delay毫秒
+		mainStaLangTimerDelay: 2000,   // 當前主車站語言Delay毫秒
 		// ––––––––––––––––––––––––––––––––
+		subStaLangPlayed: false,
 		subStaLang: 0,     					 // 副車站語言
 		subStaLangTimer: null,       //
-		subStaLangTimerDelay: 5000,  //
+		subStaLangTimerDelay: 3000,  //
+		// ––––––––––––––––––––––––––––––––
+		isRemoteShow: true,
 	},
 	created:function(){
 		this.FetchLines();
@@ -46,23 +49,30 @@ var vm = new Vue({
 			this.FetchTransfers();
 			this.curr=0;
 		},
-		ResetMainStaLang: function() {   // 重設主車站Timer
+		ResetTimer: function() {   // 重設主車站Timer
 			clearInterval(this.mainStaLangTimer);
+			clearInterval(this.subStaLangTimer);
+
 			this.mainStaLangTimer = setInterval(() => {
 				this.ToggleMainStaLang()
-			}, this.mainStaLangTimerDelay)
-			this.mainStaLang=0;
-			this.mainStaLangPlayed=0;
+			}, this.mainStaLangTimerDelay);
+			this.subStaLangTimer = setInterval(() => {
+				this.ToggleSubStaLang();
+			}, this.subStaLangTimerDelay);
+
+			this.mainStaLang=this.subStaLang=0;
+			this.mainStaLangPlayed=this.subStaLangPlayed=false;
 		},
 		ToggleMainStaLang: function(d=1){ // 切換主車站語言狀態
 			var state=this.mainStaLang;
 			var length=this.langList.length;
-			if (this.mainStaLang == 0) this.mainStaLangPlayed++;
+			if (this.mainStaLang == 0) this.mainStaLangPlayed=true;
 			this.mainStaLang = (state+length+d) % length;
 		},
 		ToggleSubStaLang: function(d=1){ // 切換副車站語言狀態
 			var state=this.subStaLang;
 			var length=this.langList.length;
+			if (this.subStaLang == 0) this.subStaLangPlayed=true;
 			this.subStaLang =(state+length+d) % length;
 		},
 		ToggleDirection: function(direction=null){ // 切換行駛方向
@@ -74,7 +84,7 @@ var vm = new Vue({
 			var state=this.curr;
 			var length=this.stations.length;
 			this.curr = (state+length+d) % length;
-			this.ResetMainStaLang();
+			this.ResetTimer();
 		},
 		GetAniClass:function(lang, type='flip'){ // 取得進入或離開動畫
 			var langList = this.langList;					// 語言列表
@@ -84,7 +94,7 @@ var vm = new Vue({
 
 			switch (type) {
 				case 'flip':
-					if(played==0){ // 若未播放過
+					if(!played){ // 若未播放過
 						classObj = (langList[0]==lang) ? {'' : true} : {'d-none' : true};
 					}else{	// 若播放過
 						if(langList[curr]==lang){
@@ -122,16 +132,6 @@ var vm = new Vue({
 				return style;
 			}
 		},
-		GetMainStaStyle:function(lang='CH'){ // 取得主站名margin-top負值
-			return '';
-			if(lang!='CH'){
-				var boxHeight = $('.main-sta-area .box .name').outerHeight();
-				var style = {
-					marginTop: -boxHeight +'px',
-				}
-				return style;
-			}
-		},
 		GetCurr:function(lang='CH'){  // 取得當前站名
 			var sta = this.stations[this.curr];
 			switch (lang) {
@@ -140,6 +140,24 @@ var vm = new Vue({
 				case 'JP': return this.StripHTML(sta.Name_JP);
 				case 'KR': return this.StripHTML(sta.Name_KR);
 				default  : return '';
+			}
+		},
+		GetMainStaTransfer:function(){
+			var stations=this.stations;
+			var index=this.curr
+			if (index>=0&&index<stations.length) {
+				return stations[index].Transfer;
+			}else {
+				return [];
+			}
+		},
+		GetMainStaTransferOther:function(){
+			var stations=this.stations;
+			var index=this.curr
+			if (index>=0&&index<stations.length) {
+				return stations[index].TransferOther;
+			}else {
+				return [];
 			}
 		},
 		GetSubSta:function(num){		// 根據index取得副站(obj)
@@ -329,14 +347,14 @@ var vm = new Vue({
 		},
 		AddSpace: function(text){ // 若只有兩字元在中間插入全形空格
 			return(text.length==2) ? text[0] + '　' + text[1] : text;
+		},
+		ToggleRemote: function(){
+			this.isRemoteShow = !this.isRemoteShow;
 		}
 	},
 	computed:{
 
 	},
 	components: {
-    // 'sub-station': {
-    //
-		// }
   }
 });

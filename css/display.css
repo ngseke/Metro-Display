@@ -97,7 +97,7 @@ body{
 /* 車站編號文字（下一站） */
 .main-sta-num-area .label{
   position: absolute;
-  font-size: 2.4rem;
+  font-size: 3.4rem;
   font-weight: 700;
   width: 100%;
   text-align: center;
@@ -142,7 +142,7 @@ body{
 .divide-line {
   height: .8rem;
 }
-.btm-area {
+.btm-area .row {
   /* height: 35rem; */
   /* border: 1px solid red; */
 }
@@ -261,4 +261,51 @@ body{
   font-weight: 500;
   line-height: 1.2rem;
   margin-left: .2rem;
+}
+/* 遙控器 */
+.remote{
+  opacity: .8;
+}
+
+.remote .btn,.remote select{
+  font-size: .4rem;
+}
+
+.remote .card{
+  background: rgba(255,255,255,.8);
+  transition: all .2s;
+}
+
+.remote .card-body{
+  padding: .4rem;
+}
+
+/* 廣播 */
+
+.line-icon.lg{
+  height: 7rem;
+  width: 7rem;
+  padding: .8rem 0;
+  font-size: 4.5rem;
+  vertical-align: middle;
+  font-weight: 500;
+  border-radius: 1.5rem;
+}
+
+.line-icon.other.lg{
+  padding: .6rem 1rem;
+}
+
+.broadcast .trans-text{
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.broadcast .trans-text .CH{
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.broadcast .trans-text .EN{
+
 }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>MRT Display 1.0 Beta</title>
+  <title>MRT Display</title>
   <?php include 'style.php'?>
 </head>
 
@@ -101,16 +101,16 @@
         <!-- 主車站文字 區塊 -->
         <div class="col-8 main-sta-area">
           <div class="box" >
-            <span class="name CH" :style="GetMainStaStyle('CH')" :class="GetAniClass('CH')">
+            <span class="name CH" :class="GetAniClass('CH')">
               <span class="text" :style="GetMainStaTextStyle('CH')">{{GetCurr('CH')}}</span>
             </span>
-            <span class="name EN" :style="GetMainStaStyle('EN')" :class="GetAniClass('EN')">
+            <span class="name EN" :class="GetAniClass('EN')">
               <span class="text" :style="GetMainStaTextStyle('EN')">{{GetCurr('EN')}}</span>
             </span>
-            <span class="name JP" :style="GetMainStaStyle('JP')" :class="GetAniClass('JP')">
+            <span class="name JP" :class="GetAniClass('JP')">
               <span class="text" :style="GetMainStaTextStyle('JP')">{{GetCurr('JP')}}</span>
             </span>
-            <span class="name KR" :style="GetMainStaStyle('KR')" :class="GetAniClass('KR')">
+            <span class="name KR" :class="GetAniClass('KR')">
               <span class="text" :style="GetMainStaTextStyle('KR')">{{GetCurr('KR')}}</span>
             </span>
           </div>
@@ -120,8 +120,47 @@
     <!-- 中間顏色分割線 -->
     <div class="divide-line" :style="GetLineColorStyle()"></div>
 
+    <!-- 廣播 -->
+    <div class="btm-area" style="min-height:20rem">
+      <div class="container broadcast">
+        <div class="row justify-content-center " >
+          <template v-for="t in GetMainStaTransfer()">
+            <div class="col-auto my-3">
+              <div class="row align-items-center">
+                <div class="col-auto ">
+                  <span class="badge line-icon lg" v-bind:style="GetLineColorStyle(t.TransferColorCode,t.TransferTextColorCode)" >
+                    {{t.TransferColor}}
+                  </span>
+                </div>
+                <div class="col trans-text pr-5">
+                  <div class="CH">{{t.TransferName}}線</div>
+                  <div class="EN py-0 my-0">{{t.TransferName_EN}} Line</div>
+                </div>
+              </div>
+            </div>
+          </template>
+          <div class="w-100"></div>
+          <template v-for="t in GetMainStaTransferOther()">
+            <div class="col-auto my-3">
+              <div class="row justify-content-around align-items-center">
+                <div class="col-auto ">
+                  <span class="badge line-icon lg other" v-bind:style="'background:'+ t.TransferColorCode" >
+                    <img class="img-fluid" :src="t.Icon">
+                  </span>
+                </div>
+                <div class="col trans-text pr-5">
+                  <div class="CH">{{t.Name}}</div>
+                  <div class="EN py-0 my-0">{{t.Name_EN}}</div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+
     <!-- 底部區塊 -->
-    <div class="btm-area" >
+    <div class="btm-area" hidden>
       <!-- 副站名 -->
       <div class="container sub-sta-area">
         <div class="row name-area align-items-end">
@@ -227,35 +266,55 @@
         </div>
       </div>
     </div>
-    <div style="height:5rem;">
-    </div>
+
+
     <!-- 控制器 -->
-    <div class="container my-3">
-      <div class="text-warning">
-        {{mainStaLangPlayed}}
-      </div>
-      <span hidden>{{timerCounter}}</span>
-      <div class="card">
-        <div class="card-body">
-          <button @click="ToggleMainStaLang(1)" type="button" class="btn btn-dark">Toggle Main</button>
-          <button @click="ToggleSubStaLang(1)" type="button" class="btn btn-dark">Toggle Sub</button>
-          <button @click="ToggleDirection()" type="button" class="btn btn-dark">切換行車方向</button>
-          <select v-model="color" @change="ResetSta()" class="form-control d-inline-block" style=" width:5rem;">
-            <template v-for="l in lines">
-              <option :value="l.Color">{{l.Color}}</option>
-            </template>
-          </select>
-          <div class="btn-group">
-            <button @click="Toggle(-1)" type="button" class="btn btn-dark"><</button>
-            <button @click="Toggle(1)" type="button" class="btn btn-dark">></button>
-            <input v-model="curr" @keyup.left="Toggle(-1)" @keyup.right="Toggle(1)">
+    <div class="remote container-fluid fixed-bottom ">
+      <div hidden>{{timerCounter}}</div>
+      <div class="row justify-content-end" :class="{'justify-content-center':false}">
+        <div class="col-auto">
+          <div class="card">
+            <div class="card-body" >
+              <transition enter-active-class="" leave-active-class="">
+                <span class="" v-if="isRemoteShow">
+                  <div class="btn-group">
+                    <button @click="ToggleMainStaLang(1)" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="切換主語言">Toggle M</button>
+                    <button @click="ToggleSubStaLang(1)" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="切換副語言">Toggle S</button>
+                  </div>
+                  <select v-model="color" @change="ResetSta()" class="form-control d-inline-block" style=" width:5rem;">
+                    <template v-for="l in lines">
+                      <option :value="l.Color" style="background:red">{{l.Color}}</option>
+                    </template>
+                  </select>
+                  <input v-model="curr" @keyup.left="Toggle(-1)" @keyup.right="Toggle(1)" style="width:2rem;">
+                  <button @click="ToggleDirection()" type="button" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="切換起訖">
+                    <i class="fa fa-arrows-h" aria-hidden="true"></i>
+                  </button>
+                  <div class="btn-group">
+                    <button @click="Toggle(-1)" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="上一站">
+                      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </button>
+                    <button @click="" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="即將到站">
+                      <i class="fa fa-circle-o" aria-hidden="true"></i>
+                    </button>
+                    <button @click="Toggle(1)" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="下一站">
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <a href="db.php" target="_blank" class="btn btn-warning">DB</a>
+                </span>
+              </transition>
+              <!-- 遙控器開關 -->
+              <a href="#" class="btn btn-secondary" @click="ToggleRemote()" data-toggle="tooltip" data-placement="top" title="隱藏/顯示遙控器">
+                <i class="fa fa-times" aria-hidden="true" v-if="isRemoteShow"></i>
+                <i class="fa fa-external-link-square" aria-hidden="true" v-if="!isRemoteShow"></i>
+              </a>
+            </div>
           </div>
-          <a href="db.php" target="_blank" class="btn btn-warning">DB</a>
         </div>
       </div>
     </div>
   </div>
-
   <?php require_once 'js.php'?>
   <script src="js/display.js"></script>
 </body>

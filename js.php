@@ -6,5 +6,14 @@
 <!-- VUE.JS -->
 <script src="js/vue.js"></script>
 
+<!-- FA -->
+<script src="js/fontawesome.js"></script>
+
 <!-- 防彈跳 -->
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script> -->
+
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>

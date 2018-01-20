@@ -17,7 +17,7 @@ if(isset($_GET['Num'])){
   $sql.= "AND Num = '$num' ";
 }
 
-$sql.="";
+$sql.="ORDER BY ID ";
 
 // echo $sql;
 

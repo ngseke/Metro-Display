@@ -230,6 +230,7 @@ VALUES('BR', '09', 'R', '05'),
 
 -- 其他轉乘 ;
 CREATE TABLE TRANSFER_OTHER(
+  ID INT(2) NOT NULL AUTO_INCREMENT,
   Color VARCHAR(7) NOT NULL,
   Num int(2) NOT NULL,
   Name VARCHAR(10) NOT NULL,
@@ -237,23 +238,27 @@ CREATE TABLE TRANSFER_OTHER(
   Icon VARCHAR(100),
   TransferColorCode VARCHAR(7)  DEFAULT '#1e1e1e',
   TransferInsideStation BOOLEAN DEFAULT TRUE,
-  PRIMARY KEY(Color,Num,Name)
+  PRIMARY KEY(ID)
 );
 
 INSERT INTO TRANSFER_OTHER(Color,Num,Name,Name_EN,Icon)
-VALUES('BL',07,'台鐵','TRA','img/tra_logo-01.png'),
+VALUES('BL',12,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+      ('R',10,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+      ('G',13,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+      ('BL',07,'台鐵','TRA','img/tra_logo-01.png'),
       ('BL',07,'高鐵','HSR','img/hsr_logo-01.png'),
       ('BL',12,'台鐵','TRA','img/tra_logo-01.png'),
       ('BL',12,'高鐵','HSR','img/hsr_logo-01.png'),
-      ('BL',12,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+
       ('BL',22,'台鐵','TRA','img/tra_logo-01.png'),
       ('BL',22,'高鐵','HSR','img/hsr_logo-01.png'),
       ('R',10,'台鐵','TRA','img/tra_logo-01.png'),
       ('R',10,'高鐵','HSR','img/hsr_logo-01.png'),
-      ('R',10,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
-      ('G',13,'桃園機場捷運','Taoyuan Airport MRT','img/airport_logo-01.png'),
+
       ('G',19,'台鐵','TRA','img/tra_logo-01.png')
 ;
+UPDATE TRANSFER_OTHER SET TransferColorCode = '#8246AF'
+WHERE Name = '桃園機場捷運';
 
 
 DROP VIEW IF EXISTS STATION_VIEW;
