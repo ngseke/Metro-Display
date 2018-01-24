@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>MRT Display</title>
+  <title>Metro Display</title>
   <?php include 'style.php'?>
 </head>
 
@@ -287,7 +287,7 @@
         <div class="col-auto">
           <div class="card">
             <div class="card-body" >
-              <small>size: {{GetDisplaySize()}}</small> 
+              <small>size: {{GetDisplaySize()}}</small>
               <transition enter-active-class="" leave-active-class="">
                 <span class="" v-if="isRemoteShow">
                   <div class="btn-group">
