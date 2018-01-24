@@ -62,7 +62,6 @@ echo "<script type=\"text/javascript\">var queryLineNum=$queryLineNum</script>";
                   $(\'.progress-bar\').html("'.$precentText.'").css("width", "'.$percent.'%");;
                 </script>';
         }
-        //usleep(1000 * 50);
       }
 
     ?>
