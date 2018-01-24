@@ -14,7 +14,7 @@
     <div class="container-fluid top-area pt-4" >
       <div class="row justify-content-between ">
         <!-- 終點站 區塊 -->
-        <div class="col-4 col-lg-6 terminal-area" >
+        <div class="col-4 col-lg-7 terminal-area" >
           <div class="row">
             <div class="col-12 ">
               <div class="box ml-4">
@@ -83,10 +83,22 @@
             <div class="col-8 text-center" >
               <div class="wrapper" style="height:4rem;">
                 <div class="box" >
-                  <div class="label CH" :class="GetAniClass('CH', 'fade')"><span>下一站</span></div>
-                  <div class="label EN" :class="GetAniClass('EN', 'fade')"><span>Next</span></div>
-                  <div class="label JP" :class="GetAniClass('JP', 'fade')"><span>つぎは</span></div>
-                  <div class="label KR" :class="GetAniClass('KR', 'fade')"><span>다음은</span></div>
+                  <div class="label CH" :class="GetAniClass('CH', 'fade')">
+                    <span v-if="!isSoon">下一站</span>
+                    <span v-if="isSoon">即將抵達</span>
+                  </div>
+                  <div class="label EN" :class="GetAniClass('EN', 'fade')">
+                    <span v-if="!isSoon">Next</span>
+                    <span v-if="isSoon">Soon</span>
+                  </div>
+                  <div class="label JP" :class="GetAniClass('JP', 'fade')">
+                    <span v-if="!isSoon">つぎは</span>
+                    <span v-if="isSoon">まもなく</span>
+                  </div>
+                  <div class="label KR" :class="GetAniClass('KR', 'fade')">
+                    <span v-if="!isSoon">다음은</span>
+                    <span v-if="isSoon">잠시후</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,49 +133,46 @@
     <div class="divide-line" :style="GetLineColorStyle()"></div>
 
     <!-- 廣播 -->
-    <div class="btm-area" >
+    <div class="btm-area translate-enter" :class="GetBtmAreaClass('transfer')">
       <div class="container broadcast">
         <div class="alert alert-info mt-3">
           <h1 class="text-center">轉乘資訊 / Transfer</h1>
         </div>
         <div class="row justify-content-center align-items-center" style="min-height:24rem;">
-          <template v-for="t in GetMainStaTransfer()">
-            <div class="col-auto my-3">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <span class="badge line-icon lg" v-bind:style="GetLineColorStyle(t.TransferColorCode,t.TransferTextColorCode)" >
-                    {{t.TransferColor}}
-                  </span>
-                </div>
-                <div class="col trans-text pr-5">
-                  <div class="CH">{{t.TransferName}}線</div>
-                  <div class="EN py-0 my-0">{{t.TransferName_EN}} Line</div>
-                </div>
+          <div class="col-auto my-3" v-for="t in GetMainStaTransfer()">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="badge line-icon lg" v-bind:style="GetLineColorStyle(t.TransferColorCode,t.TransferTextColorCode)" >
+                  {{t.TransferColor}}
+                </span>
+              </div>
+              <div class="col trans-text pr-5">
+                <div class="CH">{{t.TransferName}}線</div>
+                <div class="EN py-0 my-0">{{t.TransferName_EN}} Line</div>
               </div>
             </div>
-          </template>
-          <div class="w-100"></div>
-          <template v-for="t in GetMainStaTransferOther()">
-            <div class="col-auto my-3">
-              <div class="row justify-content-around align-items-center">
-                <div class="col-auto ">
-                  <span class="badge line-icon lg other" v-bind:style="'background:'+ t.TransferColorCode" >
-                    <img class="img-fluid" :src="t.Icon">
-                  </span>
-                </div>
-                <div class="col trans-text pr-5">
-                  <div class="CH">{{t.Name}}</div>
-                  <div class="EN py-0 my-0">{{t.Name_EN}}</div>
-                </div>
+          </div>
+          <div class="w-100" v-if="stations[curr].Transfer.length!=0"></div>
+          <div class="col-auto my-3" v-for="t in GetMainStaTransferOther()">
+            <div class="row justify-content-around align-items-center">
+              <div class="col-auto ">
+                <span class="badge line-icon lg other" v-bind:style="'background:'+ t.TransferColorCode" >
+                  <img class="img-fluid" :src="t.Icon">
+                </span>
+              </div>
+              <div class="col trans-text pr-5">
+                <div class="CH">{{t.Name}}</div>
+                <div class="EN py-0 my-0">{{t.Name_EN}}</div>
               </div>
             </div>
-          </template>
+          </div>
+
         </div>
       </div>
     </div>
 
     <!-- 底部區塊 -->
-    <div class="btm-area" hidden>
+    <div class="btm-area" :class="GetBtmAreaClass()">
       <!-- 副站名 -->
       <div class="container sub-sta-area">
         <div class="row name-area align-items-end">
@@ -278,6 +287,7 @@
         <div class="col-auto">
           <div class="card">
             <div class="card-body" >
+              <small>size: {{GetDisplaySize()}}</small> 
               <transition enter-active-class="" leave-active-class="">
                 <span class="" v-if="isRemoteShow">
                   <div class="btn-group">
@@ -297,7 +307,7 @@
                     <button @click="Toggle(-1)" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="上一站">
                       <i class="fa fa-arrow-left" aria-hidden="true"></i>
                     </button>
-                    <button @click="" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="即將到站">
+                    <button @click="SetIsSoon()" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="即將到站">
                       <i class="fa fa-circle-o" aria-hidden="true"></i>
                     </button>
                     <button @click="Toggle(1)" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="下一站">

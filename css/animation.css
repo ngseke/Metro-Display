@@ -35,7 +35,7 @@
 @keyframes translate-enter{
   0% {
     transform-origin: left;
-    transform: translateX(-1rem);
+    transform: translateX(-2rem);
     opacity: 0;
   }
   100% {
@@ -76,11 +76,11 @@
 }
 
 .translate-enter{
-  animation: translate-enter .8s;
+  animation: translate-enter .5s;
   /* animation-fill-mode: forwards; */
 }
 
 .translate-leave{
-  animation: translate-leave .8s;
+  animation: translate-leave .5s;
   animation-fill-mode: forwards;
 }

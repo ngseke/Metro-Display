@@ -11,6 +11,11 @@ body{
   color: #1e1e1e;
 }
 
+#display{
+  min-width: 1200px;
+  overflow: hidden;
+}
+
 .JP{
   font-family: 'Noto Sans Japanese', sans-serif;
 }
@@ -20,10 +25,6 @@ body{
 
 
 /* ––––Top–––––––––––––––––––––*/
-
-#display{
-  overflow: hidden;
-}
 
 .top-area{
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
@@ -57,8 +58,8 @@ body{
 }
 
 .terminal-area .CH.name span, .terminal-area .JP.name span, .terminal-area .KR.name span{
-  letter-spacing: .5rem;
-  padding-left: .5rem;
+  /* letter-spacing: .5rem;
+  padding-left: .5rem; */
 }
 
 /* 車號 */
@@ -287,21 +288,21 @@ body{
 /* 廣播 */
 
 .line-icon.lg{
-  height: 7rem;
-  width: 7rem;
-  padding: .8rem 0;
-  font-size: 4.5rem;
+  height: 6rem;
+  width: 6rem;
+  padding: 1rem 0;
+  font-size: 3.5rem;
   vertical-align: middle;
   font-weight: 500;
   border-radius: 1.5rem;
 }
 
 .line-icon.other.lg{
-  padding: .6rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .broadcast .trans-text{
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
 }
 

@@ -1,18 +1,17 @@
 var vm = new Vue({
 	el: "#display",
 	data:{
+		// ––––––––––––––––––––––––––––––––
 		lines:[],
 		stations: [],
 		transfers: [],
 		transfers_other: [],
-		timer: null,      // 為了解決$選擇器延遲bug的無用計數器
-		timerCounter: true,  //
-		color: 'BL',      // 當前路線顏色
-		terminal: 0,      // 終點站編號 index
-		direction: true,  // [行車方向] true:由小起點 false:由大起點
-		carNum: 1,        // 車號
-		curr: 11,     	 // 當前主車站 index
-		langList:['CH','EN','JP','KR'],          // 語言列表
+		color: 'BL',        // 當前路線顏色
+		terminal: 0,      	// 終點站編號 index
+		direction: false,   // [行車方向] true:由小起點 false:由大起點
+		carNum: 1,      	  // 車號
+		curr: 11,     		 	// 當前主車站 index
+		langList:['CH','EN','JP','KR'],      // 語言列表
 		// ––––––––––––––––––––––––––––––––
 		mainStaLangPlayed: false,
 		mainStaLang: 0,                // 當前主車站語言
@@ -24,6 +23,14 @@ var vm = new Vue({
 		subStaLangTimer: null,       //
 		subStaLangTimerDelay: 3000,  //
 		// ––––––––––––––––––––––––––––––––
+		isSoon: false,							 // 是否即將到站(播放轉乘廣播)
+		broadcast: 0,
+		broadcastList: ['transfer','route','route'],
+		broadcastTimer: null,        //
+		broadcastTimerDelay: 4000,
+		// ––––––––––––––––––––––––––––––––
+		timer: null,      					// 為了解決$選擇器延遲bug的無用計數器
+		timerCounter: true,
 		isRemoteShow: true,					// 是否顯示遙控器
 	},
 	created:function(){
@@ -36,9 +43,11 @@ var vm = new Vue({
 		this.mainStaLangTimer = setInterval(() => {
 			this.ToggleMainStaLang();
 		}, this.mainStaLangTimerDelay);
+		//
 		this.subStaLangTimer = setInterval(() => {
 			this.ToggleSubStaLang();
 		}, this.subStaLangTimerDelay);
+		//
 		this.timer = setInterval(() => {
 			this.timerCounter=!this.timerCounter;
 		}, 50);
@@ -52,7 +61,6 @@ var vm = new Vue({
 		ResetTimer: function() {   // 重設主車站Timer
 			clearInterval(this.mainStaLangTimer);
 			clearInterval(this.subStaLangTimer);
-
 			this.mainStaLangTimer = setInterval(() => {
 				this.ToggleMainStaLang()
 			}, this.mainStaLangTimerDelay);
@@ -60,8 +68,17 @@ var vm = new Vue({
 				this.ToggleSubStaLang();
 			}, this.subStaLangTimerDelay);
 
-			this.mainStaLang = this.subStaLang = 0;
-			this.mainStaLangPlayed = this.subStaLangPlayed = false;
+			this.ResetBroadcast();
+			this.mainStaLang = this.subStaLang = 0;	// 重設語言
+			this.mainStaLangPlayed = this.subStaLangPlayed = false;	// 重設‘已播放’
+			this.isSoon = false;	// 重設即將到站
+		},
+		ResetBroadcast:function() {
+			clearInterval(this.broadcastTimer);
+			this.broadcastTimer = setInterval(() => {
+				this.ToggleBroadcast();
+			}, this.broadcastTimerDelay);
+			broadcast = 0;
 		},
 		ToggleMainStaLang: function(d=1){ // 切換主車站語言狀態
 			var state = this.mainStaLang;
@@ -75,16 +92,69 @@ var vm = new Vue({
 			if (this.subStaLang == 0) this.subStaLangPlayed = true;
 			this.subStaLang =(state+length+d) % length;
 		},
+		ToggleBroadcast: function(d=1){ // 切換廣播狀態
+			var state = this.broadcast;
+			var length = this.broadcastList.length;
+			this.broadcast = (state+length+d) % length;
+		},
 		ToggleDirection: function(direction=null){ // 切換行駛方向
 			this.direction = (direction == null) ? (!this.direction) : direction ;
 			this.FetchStations();
 			this.FetchTransfers();
+			this.ResetTimer();
 		},
-		Toggle: function(d=1){ // 切換車站
+		Toggle: function(d=1){  // 切換車站
 			var state = this.curr;
 			var length = this.stations.length;
 			this.curr = (state+length+d) % length;
 			this.ResetTimer();
+		},
+		SetIsSoon: function(bool = true) {	// 設定即將到站
+			this.ResetBroadcast();
+			this.isSoon = bool;
+		},
+		GetBtmAreaClass(type = 'route'){	// 取得底部區域class (顯示與否)
+			var isSoon = this.isSoon;
+			var list = this.broadcastList;
+			var bc = this.broadcast;
+			var currSta = this.stations[this.curr];;
+
+			switch (type) {
+				case 'route':	// 回傳route的class
+				if(isSoon){
+					if(currSta.Transfer.length == 0 && currSta.TransferOther.length == 0){
+						return {'' : true};
+					}else{
+						if(type == list[bc]){
+							return {'' : true};
+						}else{
+							return {'d-none' : true};
+						}
+					}
+				}else{ // if !isSoon
+					return {'' : true};
+				}
+				break;
+
+				case 'transfer':	// 回傳transfer的class
+				if(isSoon){
+					if(currSta.Transfer.length == 0 && currSta.TransferOther.length == 0){
+						return {'d-none' : true};
+					}else{
+						if(type == list[bc]){
+							return {'' : true};
+						}else{
+							return {'d-none' : true};
+						}
+					}
+				}else{ // if !isSoon
+					return {'d-none' : true};
+				}
+				break;
+
+				default:
+				return {'d-none' : true};
+			}
 		},
 		GetAniClass:function(lang, type='flip'){ // 取得進入或離開動畫
 			var langList = this.langList;					// 語言列表
@@ -94,31 +164,31 @@ var vm = new Vue({
 
 			switch (type) {
 				case 'flip':
-					if(!played){ // 若未播放過
-						classObj = (langList[0] == lang) ? {'' : true} : {'d-none' : true};
-					}else{	// 若播放過
-						if(langList[curr]==lang){
-							classObj = {'flip-enter' : true};
-						}else if(langList[(curr-1+langList.length)%langList.length] == lang){
-							classObj = {'flip-leave' : true};
-						}else{
-							classObj = {'d-none' : true};
-						}
+				if(!played){ // 若未播放過
+					classObj = (langList[0] == lang) ? {'' : true} : {'d-none' : true};
+				}else{	// 若播放過
+					if(langList[curr]==lang){
+						classObj = {'flip-enter' : true};
+					}else if(langList[(curr-1+langList.length)%langList.length] == lang){
+						classObj = {'flip-leave' : true};
+					}else{
+						classObj = {'d-none' : true};
 					}
-					break;
+				}
+				break;
 				case 'fade':
-					if(played==0){ // 若未播放過
-						classObj = (langList[0] == lang) ? {'' : true} : {'d-none' : true};
-					}else{	// 若播放過
-						if(langList[curr]==lang){
-							classObj = {'fade-in' : true};
-						}else if(langList[(curr-1+langList.length) % langList.length] == lang){
-							classObj = {'fade-out' : true};
-						}else{
-							classObj = {'d-none' : true};
-						}
+				if(played==0){ // 若未播放過
+					classObj = (langList[0] == lang) ? {'' : true} : {'d-none' : true};
+				}else{	// 若播放過
+					if(langList[curr]==lang){
+						classObj = {'fade-in' : true};
+					}else if(langList[(curr-1+langList.length) % langList.length] == lang){
+						classObj = {'fade-out' : true};
+					}else{
+						classObj = {'d-none' : true};
 					}
-					break;
+				}
+				break;
 				default:
 			}
 			return classObj;
@@ -208,10 +278,10 @@ var vm = new Vue({
 		GetTerminal:function(lang){
 			var sta = this.stations[this.terminal];
 			switch (lang) {
-				case 'CH': return sta.Name;
+				case 'CH': return this.AddSpace(sta.Name);
 				case 'EN': return this.StripHTML(sta.Name_EN);
-				case 'JP': return this.StripHTML(sta.Name_JP);
-				case 'KR': return this.StripHTML(sta.Name_KR);
+				case 'JP': return this.AddSpace(sta.Name_JP);
+				case 'KR': return this.AddSpace(sta.Name_KR);
 				default : return '';
 			}
 		},
@@ -329,22 +399,28 @@ var vm = new Vue({
 			return style;
 		},
 		StripHTML:function (input) {  // 清除String中html標籤(正規)
-		  var output = '';
-		  if(typeof(input)=='string'){
-		     var output = input.replace(/(<([^>]+)>)/ig,"");
-		  }
-		  return output;
+			var output = '';
+			if(typeof(input)=='string'){
+				var output = input.replace(/(<([^>]+)>)/ig,"");
+			}
+			return output;
 		},
 		AddSpace: function(text){ // 若只有兩字元在中間插入全形空格
 			return(text.length==2) ? text[0] + '　' + text[1] : text;
 		},
 		ToggleRemote: function(){
 			this.isRemoteShow = !this.isRemoteShow;
+		},
+		GetDisplaySize:function (){	// 取得顯示屏的大小(string)
+			var display = $('#display');
+			var h = display.outerHeight();
+			var w = display.outerWidth();
+			var hr = h/(w/16), wr = w/(w/16);
+			return w + ' * ' + h + '('+ wr + ':' + hr.toFixed(2) +')';
 		}
 	},
 	computed:{
-
 	},
 	components: {
-  }
+	}
 });
